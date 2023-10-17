@@ -1,0 +1,430 @@
+<div class="content slideshow height_{{ section.settings.hero_height }} no-padding with-background {% render 'content-classes', scope: section %} {% if section.settings.hero_parallax %}with-parallax{% endif %}" id="slideshow-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="slideshow">
+  <div class="slides" data-autoplay="{{ section.settings.autoplay }}" data-arrows="{{ section.settings.arrows }}" data-speed="{{ section.settings.autoplay_speed }}" data-use-fade="{{ section.settings.use_fade }}">
+    {% liquid
+      if section.blocks.size > 0
+        assign slide_index = 0
+        for block in section.blocks
+          render 'slide', block: block, slide_index: slide_index
+          assign slide_index = slide_index | plus: 1
+        endfor
+      else
+        render 'no-blocks'
+      endif
+    %}
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {%- if section.settings.logo -%}
+      {% assign image_size = section.settings.logo.width | append:'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {%- endif -%}
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.slideshow.name",
+  "class": "section-slideshow",
+  "max_blocks": 12,
+  "settings": [
+    {
+     "type": "range",
+     "id": "hero_height",
+     "min": 20,
+     "max": 100,
+     "step": 10,
+     "unit": "%",
+     "default": 90,
+     "label": "t:sections.slideshow.settings.hero_height.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "t:sections.slideshow.settings.arrows.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.slideshow.settings.autoplay.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "use_fade",
+      "label": "t:sections.slideshow.settings.use_fade.label",
+      "options": [
+        {
+          "value": "true",
+          "label": "t:sections.slideshow.settings.use_fade.options__1"
+        },
+        {
+          "value": "false",
+          "label": "t:sections.slideshow.settings.use_fade.options__2"
+        }
+      ],
+      "default": "false"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:sections.slideshow.settings.autoplay_speed.label",
+      "default": 5,
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "unit": {
+        "en": "sec",
+        "es": "seg"
+      }
+    },
+    {
+      "type": "header",
+      "content": "t:sections.slideshow.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_parallax",
+      "label": "t:sections.slideshow.settings.hero_parallax.label",
+      "info": "t:sections.slideshow.settings.hero_parallax.info",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded",
+      "label": "t:sections.settings.expanded.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collapsed",
+      "label": "t:sections.settings.collapsed.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "t:sections.settings.show_on_desktop.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "t:sections.settings.show_on_mobile.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:sections.slideshow.presets.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.slideshow.blocks.image.settings.image.label"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "t:sections.slideshow.blocks.image.settings.overlay_color.label",
+          "default": "#292929"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "t:sections.slideshow.blocks.image.settings.overlay_opacity.label",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "t:sections.slideshow.blocks.image.settings.alignment.label",
+          "default": "center",
+          "options": [
+            {
+              "value": "top",
+              "label": "t:sections.slideshow.blocks.image.settings.alignment.options__1"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.slideshow.blocks.image.settings.alignment.options__2"
+            },
+            {
+              "value": "bottom",
+              "label": "t:sections.slideshow.blocks.image.settings.alignment.options__3"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image_for_mobile",
+          "label": "t:sections.slideshow.blocks.image.settings.image_for_mobile.label",
+          "info": "t:sections.slideshow.blocks.image.settings.image_for_mobile.info"
+        },
+        {
+          "type": "select",
+          "id": "slide_text_color",
+          "label": "t:sections.slideshow.blocks.image.settings.slide_text_color.label",
+          "default": "is-dark",
+          "options": [
+            {
+              "value": "is-light",
+              "label": "t:sections.slideshow.blocks.image.settings.slide_text_color.options__1"
+            },
+            {
+              "value": "is-dark",
+              "label": "t:sections.slideshow.blocks.image.settings.slide_text_color.options__2"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "t:sections.slideshow.blocks.image.settings.text_alignment.label",
+          "default": "middle center",
+          "options": [
+            {
+              "value": "middle left",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__1"
+            },
+            {
+              "value": "bottom left",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__2"
+            },
+            {
+              "value": "middle center",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__3"
+            },
+            {
+              "value": "bottom center",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__4"
+            },
+            {
+              "value": "middle right",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__5"
+            },
+            {
+              "value": "bottom right",
+              "label": "t:sections.slideshow.blocks.image.settings.text_alignment.options__6"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.slideshow.blocks.image.settings.heading.label",
+          "info": "t:sections.slideshow.blocks.image.settings.heading.info",
+          "default": {
+            "ar": "عنوان",
+            "bg": "Заглавие",
+            "ca": "Encapçalament",
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Üerschrift",
+            "el": "Επικεφαλίδα",
+            "en": "Slideshow Heading",
+            "es": "Título de la diapositiva",
+            "fi": "Otsikko",
+            "fr": "Titre",
+            "he": "כּוֹתֶרֶת",
+            "hr": "Naslov",
+            "hu": "Cím",
+            "id": "Menuju",
+            "it": "Intestazione",
+            "ja": "見出し",
+            "ko": "표제",
+            "lt": "Antraštė",
+            "nb": "Overskrift",
+            "nl": "rubriek",
+            "pl": "Nagłówek",
+            "pt-BR": "Cabeçalho",
+            "pt-PT": "Cabeçalho",
+            "ro": "Titlu",
+            "ru": "Заголовок",
+            "sk": "Smerovanie",
+            "sl": "Naslov",
+            "sv": "Rubrik",
+            "th": "หัวเรื่อง",
+            "tr": "başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          }
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:sections.slideshow.blocks.image.settings.subheading.label",
+          "info": "t:sections.slideshow.blocks.image.settings.subheading.info",
+          "default": {
+            "ar": "العنوان الفرعي",
+            "bg": "субтитри",
+            "ca": "Subtítol",
+            "cs": "Titulky",
+            "da": "Undertekst",
+            "de": "Untertitel",
+            "el": "Υπότιτλος",
+            "en": "Slideshow subheading.",
+            "es": "Subtítulo de la diapositiva.",
+            "fi": "Tekstitys",
+            "fr": "Sous-titre",
+            "he": "כתוביות",
+            "hr": "Titl",
+            "hu": "Felirat",
+            "id": "Subjudul",
+            "it": "Sottotitolo",
+            "ja": "字幕",
+            "ko": "부제",
+            "lt": "Subtitrai",
+            "nb": "Undertekst",
+            "nl": "Ondertitel",
+            "pl": "Podtytuł",
+            "pt-BR": "Legenda",
+            "pt-PT": "Legenda",
+            "ro": "Subtitlu",
+            "ru": "Подзаголовок",
+            "sk": "Podnadpis",
+            "sl": "Podnaslov",
+            "sv": "Texta",
+            "th": "คำบรรยาย",
+            "tr": "Alt yazı",
+            "vi": "Phụ đề",
+            "zh-CN": "字幕",
+            "zh-TW": "字幕"
+          }
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "t:sections.slideshow.blocks.image.settings.cta.label",
+          "info": "t:sections.slideshow.blocks.image.settings.cta.info",
+          "default": {
+            "ar": "تصفح منتجاتنا",
+            "bg": "Разгледайте нашите продукти",
+            "ca": "Exploreu els nostres productes",
+            "cs": "Prohlédněte si naše produkty",
+            "da": "Gennemse vores produkter",
+            "de": "Durchsuchen Sie unsere Produkte",
+            "el": "Περιηγηθείτε στα προϊόντα μας",
+            "en": "Browse our products",
+            "es": "Explora nuestros productos",
+            "fi": "Selaa tuotteitamme",
+            "fr": "Parcourez nos produits",
+            "he": "עיין במוצרים שלנו",
+            "hr": "Pregledajte naše proizvode",
+            "hu": "Böngésszen termékeink között",
+            "id": "Jelajahi produk kami",
+            "it": "Sfoglia i nostri prodotti",
+            "ja": "当社の製品を閲覧する",
+            "ko": "제품 찾아보기",
+            "lt": "Naršykite mūsų produktus",
+            "nb": "Bla gjennom produktene våre",
+            "nl": "Blader door onze producten",
+            "pl": "Przeglądaj nasze produkty",
+            "pt-BR": "Navegue pelos nossos produtos",
+            "pt-PT": "Navegue pelos nossos produtos",
+            "ro": "Răsfoiți produsele noastre",
+            "ru": "Просмотрите наши продукты",
+            "sk": "Prezrite si naše produkty",
+            "sl": "Prebrskajte naše izdelke",
+            "sv": "Bläddra bland våra produkter",
+            "th": "เรียกดูผลิตภัณฑ์ของเรา",
+            "tr": "Ürünlerimize göz atın",
+            "vi": "Duyệt qua các sản phẩm của chúng tôi",
+            "zh-CN": "浏览我们的产品",
+            "zh-TW": "瀏覽我們的產品"
+          }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.slideshow.blocks.image.settings.link.label"
+        },
+        {
+          "type": "text",
+          "id": "button_to_scroll",
+          "label": "t:sections.slideshow.blocks.image.settings.button_to_scroll.label",
+          "info": "t:sections.slideshow.blocks.image.settings.button_to_scroll.info",
+          "default": {
+            "ar": "يتعلم أكثر",
+            "bg": "Научете повече",
+            "ca": "Aprèn més",
+            "cs": "Zjistěte více",
+            "da": "Lær mere",
+            "de": "Mehr erfahren",
+            "el": "Μάθε περισσότερα",
+            "en": "Learn more",
+            "es": "Aprende más",
+            "fi": "Lue lisää",
+            "fr": "Apprendre encore plus",
+            "he": "למד עוד",
+            "hr": "Saznajte više",
+            "hu": "Tudj meg többet",
+            "id": "Belajarlah lagi",
+            "it": "Per saperne di più",
+            "ja": "もっと詳しく知る",
+            "ko": "더 알아보기",
+            "lt": "Sužinokite daugiau",
+            "nb": "Lære mer",
+            "nl": "Leer meer",
+            "pl": "Ucz się więcej",
+            "pt-BR": "Saber mais",
+            "pt-PT": "Saber mais",
+            "ro": "Află mai multe",
+            "ru": "Учить больше",
+            "sk": "Uč sa viac",
+            "sl": "Nauči se več",
+            "sv": "Läs mer",
+            "th": "เรียนรู้เพิ่มเติม",
+            "tr": "Daha fazla bilgi edin",
+            "vi": "Tìm hiểu thêm",
+            "zh-CN": "学到更多",
+            "zh-TW": "學到更多"
+          }
+        },
+        {
+          "type": "text",
+          "id": "credits",
+          "label": "t:sections.slideshow.blocks.image.settings.credits.label",
+          "info": "t:sections.slideshow.blocks.image.settings.credits.info"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "t:sections.slideshow.presets.name",
+    "settings": {
+      "autoplay": true
+    },
+    "blocks": [
+      {
+        "type": "image",
+        "settings": {
+          "slide_text_color": "is-light"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "slide_text_color": "is-dark"
+        }
+      }
+    ]
+  }]
+}
+{% endschema %}

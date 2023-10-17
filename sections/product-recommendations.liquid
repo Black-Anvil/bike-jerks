@@ -1,0 +1,123 @@
+{%- if section.settings.show_product_recommendations -%}
+  <div class="content product-recommendations loading {% render 'content-classes', scope: section %}" data-section-id="{{ section.id }}" data-section-type="product-recommendations">
+    {%- assign columns = section.settings.columns | times: 1 -%}
+    {%- assign rows = 1 | times: 1 -%}
+    {%- assign limit = columns | times: rows -%}
+    <div class="product-related-products" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+      {%- if section.settings.product_recommendations_heading != blank -%}
+        <h2>{{ section.settings.product_recommendations_heading }}</h2>
+      {%- endif -%}
+      <div class="row">
+        {%- if recommendations.products_count > 0 -%}
+          <div class="collection">
+            <div class="products columns_{{ columns }}">
+              {%- for product in recommendations.products limit: limit -%}
+                {%- render 'collection-product' product: product, columns: columns -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.product-recommendations.name",
+  "class": "section-related-products",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_product_recommendations",
+      "label": "t:sections.product-recommendations.settings.show_product_recommendations.label",
+      "info": "t:sections.product-recommendations.settings.show_product_recommendations.info",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_recommendations_heading",
+      "label": "t:sections.settings.heading.label",
+      "default": {
+        "ar": "ربما يعجبك أيضا",
+        "bg": "Може да харесате още",
+        "ca": "també et pot agradar",
+        "cs": "Mohlo by se vám také líbit",
+        "da": "Du vil måske også kunne lide",
+        "de": "Sie können auch mögen",
+        "el": "μπορεί να σου αρέσει επίσης",
+        "en": "You may also like",
+        "es": "También te puede interesar",
+        "fi": "saatat pitää myös",
+        "fr": "Tu pourrais aussi aimer",
+        "he": "אולי גם תאהב",
+        "hr": "Možda ti se također svidi",
+        "hu": "Érdekelhet még",
+        "id": "Anda mungkin juga menyukai",
+        "it": "Potrebbe piacerti anche",
+        "ja": "あなたも好きかも",
+        "ko": "당신은 또한 좋아할 수 있습니다",
+        "lt": "tau taip pat gali patikti",
+        "nb": "Kan hende du også liker",
+        "nl": "Dit vind je misschien ook leuk",
+        "pl": "Może Ci się spodobać",
+        "pt-BR": "você pode gostar",
+        "pt-PT": "você pode gostar",
+        "ro": "Ați putea dori, de asemenea",
+        "ru": "Вам также может понравиться",
+        "sk": "Tiež sa ti môže páčiť",
+        "sl": "Morda vam bo tudi všeč",
+        "sv": "Du kanske också gillar",
+        "th": "คุณอาจชอบ",
+        "tr": "Şunlar da hoşunuza gidebilir",
+        "vi": "Bạn cũng có thể thích",
+        "zh-CN": "你可能也会喜欢",
+        "zh-TW": "你可能也會喜歡"
+      }
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "t:sections.product-recommendations.settings.columns.label",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "t:sections.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "t:sections.settings.show_background.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded",
+      "label": "t:sections.settings.expanded.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collapsed",
+      "label": "t:sections.settings.collapsed.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "t:sections.settings.show_on_desktop.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "t:sections.settings.show_on_mobile.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

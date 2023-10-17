@@ -1,0 +1,295 @@
+{
+  "current": {
+    "color_accent": "#1BA1E2",
+    "color_header_text": "#121212",
+    "color_header_bg": "#FFFFFF",
+    "color_header_border": "#404752",
+    "opacity_header_border": 10,
+    "color_side_nav_text": "#121212",
+    "color_side_nav_bg": "#ffffff",
+    "color_footer_bg": "#121212",
+    "header_font": "avenir_next_n4",
+    "base_font": "avenir_next_n3",
+    "enable_sticky_header": true,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/instagram.com\/bikejerks",
+    "social_tiktok_link": "",
+    "social_youtube_link": "",
+    "checkout_header_image": "shopify:\/\/shop_images\/IMG_6335.jpg",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "home_page_only": true,
+          "top_banner_text": "Register For Hodag Country Ramble - September 9-11",
+          "announcement_link": "https:\/\/www.bikereg.com\/hodag-country-ramble",
+          "color_announcement_text": "#ffffff",
+          "color_announcement_bg": "#212529"
+        }
+      },
+      "popup": {
+        "type": "popup",
+        "settings": {
+          "enable_popup": false,
+          "enable_test": false,
+          "delay": 5,
+          "frequency": 30,
+          "content_max_width": 650,
+          "title": "Sign up and save",
+          "content": "<p>You can use this popup to display some useful information to your customers. Entice customers to sign up for your mailing list with discounts or exclusive offers.<\/p>",
+          "newsletter_enable": true,
+          "button_enable": false,
+          "button_label": "Optional button",
+          "button_link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "5d39393c-f647-40f8-b947-5f00c46049ac": {
+            "type": "mega",
+            "settings": {
+              "name": "Shop",
+              "image-1": "shopify:\/\/shop_images\/Turman.jpg",
+              "url-1": "",
+              "text-1": "",
+              "url-2": "",
+              "text-2": ""
+            }
+          }
+        },
+        "block_order": [
+          "5d39393c-f647-40f8-b947-5f00c46049ac"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/header_logo_cropped.png",
+          "logo_max_width": 120,
+          "logo_position": "center",
+          "top_nav_linklist": "main-menu-1",
+          "header_padding": 20,
+          "show_search": true,
+          "enable_account": true,
+          "enable_transparent_header": false,
+          "transparent_header_text_color": "#ffffff",
+          "transparent_header_border_color": "#ffffff",
+          "transparent_header_border_opacity": 0,
+          "side_nav_linklist": "main-menu-1",
+          "show_social_icons": true,
+          "show_language_selector": false,
+          "show_country_selector": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "menu",
+            "settings": {
+              "title": "Quick links",
+              "menu": "footer"
+            }
+          },
+          "footer-1": {
+            "type": "contact",
+            "disabled": true,
+            "settings": {
+              "title": "Contact us",
+              "footer_contact_email": "jeff(at)bikejerks.com",
+              "footer_contact_twitter": "",
+              "footer_contact_telephone": "",
+              "footer_contact_whatsapp": ""
+            }
+          },
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "title": "Our affiliate sites",
+              "text": "<p><a href=\"https:\/\/wildebikes.com\" target=\"_blank\" title=\"https:\/\/wildebikes.com\">Wilde Bikes<\/a><\/p><p><a href=\"https:\/\/holymountainusa.com\" target=\"_blank\" title=\"https:\/\/holymountainusa.com\">Holy Mountain USA<\/a><\/p>"
+            }
+          },
+          "footer-3": {
+            "type": "social",
+            "settings": {
+              "title": "Follow us"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2",
+          "footer-3"
+        ],
+        "settings": {
+          "footer_show_payments": false,
+          "home_footer_hidden": false,
+          "footer_hidden": false,
+          "show_language_selector": false,
+          "show_country_selector": false
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+    "Generic": {
+      "header_font": "avenir_next_n4",
+      "base_font": "avenir_next_n3",
+      "color_accent": "#1BA1E2",
+      "color_header_text": "#121212",
+      "color_header_bg": "#FFFFFF",
+      "color_header_border": "#404752",
+      "opacity_header_border": 10,
+      "color_side_nav_text": "#121212",
+      "color_side_nav_bg": "#ffffff",
+      "color_footer_bg": "#121212",
+      "enable_sticky_header": true,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "show_announcement": true,
+            "home_page_only": true,
+            "color_announcement_text": "#FFFFFF",
+            "color_announcement_bg": "#212529"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_popup": false
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_padding": 30,
+            "logo_position": "center",
+            "enable_transparent_header": false
+          }
+        }
+      }
+    },
+    "Startup": {
+      "header_font": "roboto_n4",
+      "base_font": "roboto_n3",
+      "color_accent": "#00b5ad",
+      "color_header_text": "#FFFFFF",
+      "color_header_bg": "#292C30",
+      "color_header_border": "#FFFFFF",
+      "opacity_header_border": 0,
+      "color_side_nav_text": "#FFFFFF",
+      "color_side_nav_bg": "#292C30",
+      "color_footer_bg": "#121212",
+      "enable_sticky_header": true,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "show_announcement": false,
+            "home_page_only": false,
+            "color_announcement_text": "#000000",
+            "color_announcement_bg": "#FFFFFF"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_popup": false
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_padding": 20,
+            "logo_position": "left",
+            "enable_transparent_header": true
+          }
+        }
+      }
+    },
+    "Fashion": {
+      "header_font": "playfair_display_n4",
+      "base_font": "lato_n3",
+      "color_accent": "#000000",
+      "color_header_text": "#000000",
+      "color_header_bg": "#FFFFFF",
+      "color_header_border": "#404752",
+      "opacity_header_border": 10,
+      "color_side_nav_text": "#FFFFFF",
+      "color_side_nav_bg": "#0f3e57",
+      "color_footer_bg": "#000000",
+      "enable_sticky_header": true,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "show_announcement": false,
+            "home_page_only": false,
+            "color_announcement_bg": "#0f3e57",
+            "color_announcement_text": "#FFFFFF"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_popup": false
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_padding": 30,
+            "logo_position": "left",
+            "enable_transparent_header": false
+          }
+        }
+      }
+    },
+    "Art": {
+      "header_font": "swiss_721_rounded_n7",
+      "base_font": "lato_n3",
+      "color_accent": "#ff5555",
+      "color_header_text": "#FFFFFF",
+      "color_header_bg": "#4d4d4d",
+      "color_header_border": "#FFFFFF",
+      "opacity_header_border": 0,
+      "color_side_nav_text": "#FFFFFF",
+      "color_side_nav_bg": "#4d4d4d",
+      "color_footer_bg": "#4d4d4d",
+      "enable_sticky_header": false,
+      "show_product_titles": false,
+      "show_product_secondary_image": false,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "show_announcement": false,
+            "home_page_only": true,
+            "color_announcement_bg": "#ff5555",
+            "color_announcement_text": "#FFFFFF"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_popup": false
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_padding": 30,
+            "logo_position": "center",
+            "enable_transparent_header": true
+          }
+        }
+      }
+    }
+  }
+}

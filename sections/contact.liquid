@@ -1,0 +1,38 @@
+<div class="content page">
+  <div class="inner with-layout-options {{ settings.content_layout }} ">
+    {% form 'contact' %}
+      <div class="main {% if form.posted_successfully? %}align-center{% else %}{{ settings.pages_title_alignment }}{% endif %}">
+        <h2>{{ page.title }}</h2>
+        <div class="rte">
+          {{ page.content }}
+        </div>
+        {% if form.posted_successfully? %}
+          <h4>{{ 'contact.form.post_success' | t }}</h4>
+          <br><br><br>
+        {% else %}
+          <div class="row">
+            <input class="full{% if form.errors contains 'name' %} error{% endif %}" type="text" id="contactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" aria-label="{{ 'contact.form.name' | t }}">
+            {% render 'form-field-error', form: form, field: 'name' %}
+          </div>
+          <div class="row">
+            <input class="full{% if form.errors contains 'email' %} error{% endif %}" type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-label="{{ 'contact.form.email' | t }}">
+            {% render 'form-field-error', form: form, field: 'email' %}
+          </div>
+          <div class="row">
+            <textarea class="full" rows="5" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" aria-label="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          </div>
+          <div class="row">
+            <input class="btn action" name="commit" type="submit" value="{{ 'contact.form.send' | t }}">
+          </div>
+        {% endif %}
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact.name",
+  "class": "section-contact"
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_image": false,
+        "show_collection_description": true,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "show_labels": true,
+        "columns": 4,
+        "rows": 4,
+        "show_background": false,
+        "expanded": true
+      }
+    },
+    "165176747018a09a38": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "layout": "grid",
+        "post_limit": 2,
+        "title": "Get Inspired",
+        "max_width": 950,
+        "show_background": false,
+        "expanded": true,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    }
+  },
+  "order": [
+    "main-collection",
+    "165176747018a09a38"
+  ]
+}

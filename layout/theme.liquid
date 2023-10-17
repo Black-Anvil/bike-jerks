@@ -1,0 +1,23 @@
+<!doctype html>
+<!-- California Theme Version 9.3.0 -->
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    {% render 'metas' %}
+    {% render 'resources' %}
+    {{ content_for_header }}
+  </head>
+  <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{ settings.content_layout }} {{ settings.content_alignment }} {% if settings.enable_sticky_header %}sticky-header{% endif %}">
+    <a class="skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    {% section 'announcement-bar' %}
+    {% section 'popup' %}
+    {% section 'header' %}
+    <div class="main" id="MainContent">
+      <div class="layout">
+        <div class="sections" id="Sections" role="main" >
+          {{ content_for_layout }}
+        </div>
+      </div>
+      {% section 'footer' %}
+    </div>
+  </body>
+</html>

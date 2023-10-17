@@ -1,0 +1,37 @@
+<div class="product">
+  <a class="inner">
+    <div class="image">
+      {% assign mod = i | modulo: 6 | plus: 1 %}
+      {{ 'product-' | append: mod | placeholder_svg_tag: 'placeholder-svg darker' }}
+    </div>
+    {% if settings.show_product_titles or settings.show_product_vendors or settings.show_product_prices or settings.show_product_status %}
+      <div class="info">
+        {% if settings.show_product_status %}
+          <div class="status nowrap">
+            {% if mod == 4 %}
+              <span class="ca sale">{{ 'products.product.on_sale' | t }}</span>
+            {% else %}
+              <span class="ca buy">{{ 'products.product.buy' | t }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="metas">
+          {% if settings.show_product_titles %}
+            <div class="title">{{ 'home_page.collection.onboarding_product_name' | t }}</div>
+          {% endif %}
+          {% if settings.show_product_vendors %}
+            <div class="vendor"><span>{{ 'home_page.collection.onboarding_product_vendor' | t }}</span></div>
+          {% endif %}
+          {% if settings.show_product_prices %}
+            <div>
+              {% if mod == 4 %}
+                <span class="price striped">{{ 3000 | money }}</span>
+              {% endif %}
+              <span class="price">{{ 1999 | money }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </a>
+</div>

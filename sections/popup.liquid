@@ -1,0 +1,252 @@
+{% if section.settings.enable_popup %}
+  <div class="popup newsletter" data-section-id="{{ section.id }}" data-section-type="popup" data-delay="{{ section.settings.delay }}" data-frequency="{{ section.settings.frequency }}" data-test="{{ section.settings.enable_test }}">
+    <div class="modal animated hidden">
+      <div class="background"></div>
+      <div class="frame" style="max-width: {{ section.settings.content_max_width }}px;">
+        <div class="titles">
+          <h2 class="section-title">{{ section.settings.title }}</h2>
+          <div class="rte">
+            {{ section.settings.content }}
+          </div>            
+        </div>
+        <div class="content">
+          {% if section.settings.newsletter_enable %}
+            {% form 'customer', id: 'PopupForm' %}
+              {% if form.posted_successfully? %}
+                <p class="success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {% else %}
+                <div class="table">
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <label for="email" class="hide">{{ 'contact.form.email' | t }}</label>
+                  <input class="text {% if form.errors contains 'email' %} error{% endif %}" type="email" name="contact[email]" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" id="email" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}">
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn solid" value="{{ 'general.newsletter_form.submit' | t }}">
+                  </span>
+                </div>
+                {% if form.errors %}
+                  {% for field in form.errors %}
+                    <div class="field-error">{{ form.errors.messages[field] }}</div>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endform %}
+          {% endif %}
+          {% if section.settings.button_enable and section.settings.button_label != blank %}
+            <a class="btn action normal" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+          {% endif %}
+        </div>
+        <a href="#" data-action="close-modal" class="close" aria-label="{{ 'general.accessibility.close_modal' | t }}">
+          <i class="fc fc-close"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.popup.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_popup",
+      "label": "t:sections.popup.settings.enable_popup.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_test",
+      "label": "t:sections.popup.settings.enable_test.label",
+      "info": "t:sections.popup.settings.enable_test.info",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "t:sections.popup.settings.delay.label",
+      "info": "t:sections.popup.settings.delay.info",
+      "min": 2,
+      "max": 60,
+      "step": 1,
+      "unit": "sec",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "frequency",
+      "label": "t:sections.popup.settings.frequency.label",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "unit": "day",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "t:sections.popup.settings.content_max_width.label",
+      "default": 650,
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.popup.settings.header__1.content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.popup.settings.title.label",
+      "default": {
+        "ar": "قم بالتسجيل والحفظ",
+        "bg": "Регистрирайте се и спестете",
+        "ca": "Registra't i guarda",
+        "cs": "Zaregistrujte se a ušetřete",
+        "da": "Tilmeld dig og gem",
+        "de": "Registrieren und sparen",
+        "el": "Εγγραφείτε και αποθηκεύστε",
+        "en": "Sign up and save",
+        "es": "Regístrate y ahorra",
+        "fi": "Rekisteröidy ja säästä",
+        "fr": "Inscrivez-vous et économisez",
+        "he": "הירשם ושמור",
+        "hr": "Prijavite se i uštedite",
+        "hu": "Regisztráljon és mentse",
+        "id": "Daftar dan simpan",
+        "it": "Iscriviti e risparmia",
+        "ja": "サインアップして保存",
+        "ko": "가입하고 저장",
+        "lt": "Prisiregistruokite ir išsaugokite",
+        "nb": "Registrer deg og lagre",
+        "nl": "Aanmelden en opslaan",
+        "pl": "Zarejestruj się i zapisz",
+        "pt-BR": "Inscreva-se e salve",
+        "pt-PT": "Inscreva-se e salve",
+        "ro": "Înscrieți-vă și salvați",
+        "ru": "Зарегистрируйтесь и сохраните",
+        "sk": "Zaregistrujte sa a ušetrite",
+        "sl": "Prijavite se in prihranite",
+        "sv": "Registrera dig och spara",
+        "th": "ลงทะเบียนและบันทึก",
+        "tr": "Kaydolun ve kaydedin",
+        "vi": "Đăng ký và lưu",
+        "zh-CN": "注册并保存",
+        "zh-TW": "註冊並保存"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.popup.settings.content.label",
+      "default": {
+        "ar": "<p> يمكنك استخدام هذه النافذة المنبثقة لعرض بعض المعلومات المفيدة لعملائك. اجذب العملاء للاشتراك في قائمتك البريدية بخصومات أو عروض حصرية. </p>",
+                "bg": "<p>Можете да използвате този изскачащ прозорец, за да покажете полезна информация на клиентите си. Привличайте клиентите да се регистрират за вашия пощенски списък с отстъпки или ексклузивни оферти.</p>",
+                "ca": "<p>Podeu utilitzar aquesta finestra emergent per mostrar informació útil als vostres clients. Atreu els clients a registrar-se a la vostra llista de correu amb descomptes o ofertes exclusives.</p>",
+                "cs": "<p>Toto vyskakovací okno můžete použít k zobrazení některých užitečných informací svým zákazníkům. Přilákejte zákazníky, aby se zaregistrovali do vašeho seznamu adresátů pomocí slev nebo exkluzivních nabídek.</p>",
+                "da": "<p>Du kan bruge denne popup til at vise nogle nyttige oplysninger til dine kunder. Lok kunder til at tilmelde sig din mailingliste med rabatter eller eksklusive tilbud.</p>",
+                "de": "<p>Sie können dieses Popup verwenden, um Ihren Kunden einige nützliche Informationen anzuzeigen. Locken Sie Kunden mit Rabatten oder exklusiven Angeboten dazu, sich für Ihre Mailingliste anzumelden.</p>",
+                "el": "<p>Μπορείτε να χρησιμοποιήσετε αυτό το αναδυόμενο παράθυρο για να εμφανίσετε ορισμένες χρήσιμες πληροφορίες στους πελάτες σας. Δελεάστε τους πελάτες να εγγραφούν στη λίστα αλληλογραφίας σας με εκπτώσεις ή αποκλειστικές προσφορές.</p>",
+                "en": "<p>You can use this popup to display some useful information to your customers. Entice customers to sign up for your mailing list with discounts or exclusive offers.</p>",
+                "es": "<p>Puede utilizar esta ventana emergente para mostrar información útil a sus clientes. Atrae a los clientes para que se registren en tu lista de correo con descuentos u ofertas exclusivas.</p>",
+                "fi": "<p>Tämän ponnahdusikkunan avulla voit näyttää hyödyllisiä tietoja asiakkaillesi. Houkuttele asiakkaita liittymään postituslistallesi alennuksilla tai erikoistarjouksilla.</p>",
+                "fr": "<p>Vous pouvez utiliser cette fenêtre contextuelle pour afficher des informations utiles à vos clients. Incitez les clients à s'inscrire à votre liste de diffusion avec des remises ou des offres exclusives.</p>",
+                "he": "<p>תוכל להשתמש בחלון הקופץ הזה כדי להציג מידע שימושי ללקוחות שלך. לפתות לקוחות להירשם לרשימת התפוצה שלך עם הנחות או הצעות בלעדיות.</p>",
+                "hr": "<p>Ovaj skočni prozor možete koristiti za prikaz korisnih informacija svojim klijentima. Potaknite kupce da se prijave na vašu mailing listu s popustima ili ekskluzivnim ponudama.</p>",
+                "hu": "<p>Ezzel az előugró ablakkal hasznos információkat jeleníthet meg ügyfelei számára. Kedvezményekkel vagy exkluzív ajánlatokkal csábítsa ügyfeleit, hogy regisztráljanak a levelezőlistára.</p>",
+                "id": "<p>Anda dapat menggunakan munculan ini untuk menampilkan beberapa informasi berguna kepada pelanggan Anda. Pikat pelanggan untuk mendaftar ke milis Anda dengan diskon atau penawaran eksklusif.</p>",
+                "it": "<p>Puoi utilizzare questo popup per mostrare alcune informazioni utili ai tuoi clienti. Invoglia i clienti a iscriversi alla tua mailing list con sconti o offerte esclusive.</p>",
+                "ja": "<p>このポップアップを使用して、顧客に役立つ情報を表示できます。割引や特別オファーでメーリングリストに登録するように顧客を誘います。</p>",
+                "ko": "<p>이 팝업을 사용하여 고객에게 유용한 정보를 표시할 수 있습니다. 할인 또는 독점 제안으로 고객이 메일링 리스트에 등록하도록 유도하십시오.</p>",
+                "lt": "<p>Šį iššokantįjį langą galite naudoti norėdami klientams pateikti naudingos informacijos. Pritraukite klientus registruotis į jūsų adresų sąrašą su nuolaidomis ar išskirtiniais pasiūlymais.</p>",
+                "nb": "<p>Du kan bruke denne popup-vinduet til å vise nyttig informasjon til kundene dine. Lok kunder til å registrere seg på e-postlisten din med rabatter eller eksklusive tilbud.</p>",
+                "nl": "<p>U kunt deze pop-up gebruiken om wat nuttige informatie aan uw klanten te tonen. Verleid klanten om zich aan te melden voor uw mailinglijst met kortingen of exclusieve aanbiedingen.</p>",
+                "pl": "<p>Możesz użyć tego wyskakującego okienka, aby wyświetlić przydatne informacje swoim klientom. Zachęć klientów do zapisania się na listę mailingową z rabatami lub ekskluzywnymi ofertami.</p>",
+                "pt-BR": "<p>Você pode usar este pop-up para exibir algumas informações úteis para seus clientes. Incentive os clientes a se inscreverem em sua lista de e-mails com descontos ou ofertas exclusivas.</p>",
+                "pt-PT": "<p>Você pode usar este pop-up para exibir algumas informações úteis para seus clientes. Incentive os clientes a se inscreverem em sua lista de e-mails com descontos ou ofertas exclusivas.</p>",
+                "ro": "<p>Puteți folosi această fereastră pop-up pentru a afișa câteva informații utile clienților dvs. Atrageți clienții să se înscrie pe lista dvs. de corespondență cu reduceri sau oferte exclusive.</p>",
+                "ru": "<p>Это всплывающее окно можно использовать для отображения полезной информации для ваших клиентов. Побуждайте клиентов подписываться на вашу рассылку со скидками или эксклюзивными предложениями.</p>",
+                "sk": "<p>Toto kontextové okno môžete použiť na zobrazenie niektorých užitočných informácií pre svojich zákazníkov. Prilákajte zákazníkov, aby sa zaregistrovali do vášho zoznamu adresátov, pomocou zliav alebo exkluzívnych ponúk.</p>",
+                "sl": "<p>To pojavno okno lahko uporabite za prikaz nekaterih koristnih informacij svojim strankam. Privabite stranke, da se prijavijo na vaš poštni seznam s popusti ali ekskluzivnimi ponudbami.</p>",
+                "sv": "<p>Du kan använda denna popup för att visa användbar information för dina kunder. Locka kunder att registrera sig för din e-postlista med rabatter eller exklusiva erbjudanden.</p>",
+                "th": "<p>คุณสามารถใช้ป๊อปอัปนี้เพื่อแสดงข้อมูลที่เป็นประโยชน์ต่อลูกค้าของคุณ ดึงดูดลูกค้าให้ลงชื่อสมัครใช้รายชื่ออีเมลของคุณด้วยส่วนลดหรือข้อเสนอสุดพิเศษ</p>",
+                "tr": "<p>Müşterilerinize bazı yararlı bilgiler görüntülemek için bu açılır pencereyi kullanabilirsiniz. İndirimler veya özel tekliflerle müşterileri e-posta listenize kaydolmaya ikna edin.</p>",
+                "vi": "<p> Bạn có thể sử dụng cửa sổ bật lên này để hiển thị một số thông tin hữu ích cho khách hàng của mình. Thu hút khách hàng đăng ký danh sách gửi thư của bạn với chiết khấu hoặc ưu đãi độc quyền. </p>",
+                "zh-CN": "<p>您可以使用此弹出窗口向您的客户显示一些有用的信息。通过折扣或独家优惠吸引客户注册您的邮寄名单。</p>",
+                "zh-TW": "<p>您可以使用此彈出窗口向您的客戶顯示一些有用的信息。通過折扣或獨家優惠吸引客戶註冊您的郵寄名單。</p>"
+      }
+    },
+    {
+      "type": "header",
+      "content": "t:sections.popup.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "label": "t:sections.popup.settings.newsletter_enable.label",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.popup.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.popup.settings.header__3.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_enable",
+      "label": "t:sections.popup.settings.button_enable.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.popup.settings.button_label.label",
+      "default": {
+        "ar": "زر اختياري",
+        "bg": "Бутон по избор",
+        "ca": "Botó opcional",
+        "cs": "Volitelné tlačítko",
+        "da": "Valgfri knap",
+        "de": "Optionale Schaltfläche",
+        "el": "Προαιρετικό κουμπί",
+        "en": "Optional button",
+        "es": "Botón opcional",
+        "fi": "Valinnainen painike",
+        "fr": "Bouton facultatif",
+        "he": "כפתור אופציונלי",
+        "hr": "Izborni gumb",
+        "hu": "Opcionális gomb",
+        "id": "Tombol opsional",
+        "it": "Pulsante opzionale",
+        "ja": "オプションボタン",
+        "ko": "옵션 버튼",
+        "lt": "Neprivalomas mygtukas",
+        "nb": "Valgfri knapp",
+        "nl": "Optionele knop",
+        "pl": "Opcjonalny przycisk",
+        "pt-BR": "Botão opcional",
+        "pt-PT": "Botão opcional",
+        "ro": "Buton optional",
+        "ru": "Дополнительная кнопка",
+        "sk": "Voliteľné tlačidlo",
+        "sl": "Izbirni gumb",
+        "sv": "Valfri knapp",
+        "th": "ปุ่มตัวเลือก",
+        "tr": "İsteğe bağlı düğme",
+        "vi": "Nút tùy chọn",
+        "zh-CN": "可选按钮",
+        "zh-TW": "可選按鈕"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.popup.settings.button_link.label"
+    }
+  ]
+}
+{% endschema %}

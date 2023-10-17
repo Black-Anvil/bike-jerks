@@ -1,0 +1,13 @@
+<div class="top {{ settings.pages_title_alignment }}">
+  <h2>
+    <a href="{{ blog.url }}">
+      {{ blog.title }}
+    </a>
+    <a class="rss" href="{{ shop.url }}{{ blog.url }}.atom" target="_blank">
+      <i class="fc fc-rss"></i>
+    </a>
+  </h2>
+  {% if current_tags %}
+    <h3>Tag: {{ current_tags.first }}</h3>
+  {% endif %}
+</div>

@@ -1,0 +1,178 @@
+<div class="content featured-collection {% render 'content-classes', scope: section %}">
+  {% unless section.settings.title == blank %}
+    <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+  {% endunless %}
+  <div class="row">
+    {% liquid
+      assign collection = section.settings.collection
+      render 'collection', collection: collection
+    %}
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="pagination">
+        <a href="{{ section.settings.button_link }}" class="more btn action small semi">{{ section.settings.button_label | escape }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.featured-collection.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.settings.heading.label",
+      "default": {
+        "ar": "مجموعة مميزة",
+        "bg": "Представена колекция",
+        "ca": "Col·lecció destacada",
+        "cs": "Vybraná kolekce",
+        "da": "Udvalgt samling",
+        "de": "Ausgewählte Sammlung",
+        "el": "Επιλεγμένη συλλογή",
+        "en": "Featured collection",
+        "es": "colección destacada",
+        "fi": "Suositeltu kokoelma",
+        "fr": "Collection en vedette",
+        "he": "אוסף נבחר",
+        "hr": "Istaknuta zbirka",
+        "hu": "Kiemelt gyűjtemény",
+        "id": "Koleksi unggulan",
+        "it": "Collezione in primo piano",
+        "ja": "注目のコレクション",
+        "ko": "추천 컬렉션",
+        "lt": "Teminė kolekcija",
+        "nb": "Utvalgt samling",
+        "nl": "Uitgelichte collectie",
+        "pl": "Polecana kolekcja",
+        "pt-BR": "Coleção em destaque",
+        "pt-PT": "Coleção em destaque",
+        "ro": "Colecție recomandată",
+        "ru": "Избранная коллекция",
+        "sk": "Odporúčaná kolekcia",
+        "sl": "Predstavljena zbirka",
+        "sv": "Utvald samling",
+        "th": "คอลเลกชันที่โดดเด่น",
+        "tr": "Öne çıkan koleksiyon",
+        "vi": "Bộ sưu tập nổi bật",
+        "zh-CN": "精选收藏",
+        "zh-TW": "精選收藏"
+      }
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.featured-collection.settings.paragraph.content"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "t:sections.featured-collection.settings.columns.label",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "t:sections.featured-collection.settings.rows.label",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.featured-collection.settings.button_label.label",
+      "default": {
+        "ar": "تصفح المزيد من المنتجات",
+        "bg": "Разгледайте още продукти",
+        "ca": "Exploreu més productes",
+        "cs": "Procházet další produkty",
+        "da": "Gennemse flere produkter",
+        "de": "Weitere Produkte durchsuchen",
+        "el": "Περιηγηθείτε σε περισσότερα προϊόντα",
+        "en": "Browse more products",
+        "es": "Explorar más productos",
+        "fi": "Selaa lisää tuotteita",
+        "fr": "Parcourir plus de produits",
+        "he": "עיין בעוד מוצרים",
+        "hr": "Pregledajte više proizvoda",
+        "hu": "Böngésszen további termékek között",
+        "id": "Jelajahi lebih banyak produk",
+        "it": "Sfoglia più prodotti",
+        "ja": "他の製品を閲覧する",
+        "ko": "더 많은 제품 찾아보기",
+        "lt": "Naršykite daugiau produktų",
+        "nb": "Bla gjennom flere produkter",
+        "nl": "Blader door meer producten",
+        "pl": "Przeglądaj więcej produktów",
+        "pt-BR": "Procure mais produtos",
+        "pt-PT": "Procure mais produtos",
+        "ro": "Căutați mai multe produse",
+        "ru": "Посмотреть больше продуктов",
+        "sk": "Prezrite si ďalšie produkty",
+        "sl": "Prebrskajte več izdelkov",
+        "sv": "Bläddra bland fler produkter",
+        "th": "เลือกชมสินค้าเพิ่มเติม",
+        "tr": "Daha fazla ürüne göz atın",
+        "vi": "Duyệt các sản phẩm khác",
+        "zh-CN": "浏览更多产品",
+        "zh-TW": "瀏覽更多產品"
+      },
+      "info": "t:sections.settings.heading.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.featured-collection.settings.button_link.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "t:sections.settings.show_background.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded",
+      "label": "t:sections.settings.expanded.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collapsed",
+      "label": "t:sections.settings.collapsed.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "t:sections.settings.show_on_desktop.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "t:sections.settings.show_on_mobile.label",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-collection.presets.name"
+    }
+  ]
+}
+{% endschema %}

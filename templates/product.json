@@ -1,0 +1,143 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "increase_space_before_block": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "increase_space_before_block": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatches_selector": "",
+            "popup_selector": "Size",
+            "popup_text": "Size guide",
+            "popup_page": "",
+            "increase_space_before_block": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_pickup_availability": true,
+            "increase_space_before_block": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "increase_space_before_block": true
+          }
+        },
+        "collapsible_tab_1": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Tab 1",
+            "content": "<p>Tab 1 content...<\/p>",
+            "page": "",
+            "icon": "washing",
+            "increase_space_before_block": true
+          }
+        },
+        "collapsible_tab_2": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Tab 2",
+            "content": "<p>Tab 2 content...<\/p>",
+            "page": "",
+            "icon": "leaf",
+            "increase_space_before_block": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "facebook_sharing_products": true,
+            "twitter_sharing_products": true,
+            "pinterest_sharing_products": true,
+            "increase_space_before_block": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "collapsible_tab_1",
+        "collapsible_tab_2",
+        "share"
+      ],
+      "settings": {
+        "product_images_layout": "stack",
+        "enable_sticky_info": true,
+        "zoom_enable": true,
+        "enable_video_looping": false,
+        "show_background": false,
+        "expanded": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "columns": 4,
+        "show_background": false,
+        "expanded": true,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "1651764729c064dd21": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "layout": "grid",
+        "post_limit": 2,
+        "title": "Get Inspired",
+        "max_width": 950,
+        "show_background": false,
+        "expanded": true,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "165176773171de7ba8": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Accessorize",
+        "collection": "accessories",
+        "columns": 4,
+        "rows": 2,
+        "button_label": "Browse more products",
+        "button_link": "",
+        "show_background": false,
+        "expanded": true,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "1651764729c064dd21",
+    "165176773171de7ba8"
+  ]
+}

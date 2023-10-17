@@ -1,0 +1,384 @@
+{
+  "general": {
+    "404": {
+      "title": "Strona nie znaleziona",
+      "subtitle": "Żądana strona nie istnieje.",
+      "continue_shopping": "Kontynuować zakupy",
+      "open_menu": "Otwórz menu"
+    },
+    "accessibility": {
+      "skip_to_content": "Przejdź do treści",
+      "menu": "Menu",
+      "close_modal": "Blisko",
+      "video_player": "Odtwarzacz wideo",
+      "next_product": "Następny produkt: {{ product }}",
+      "previous_product": "Poprzedni produkt: {{ product }}",
+      "star_reviews_info": "{{ rating_value }} z {{ rating_max }} gwiazdek"
+    },
+    "search": {
+      "title": "Szukaj:",
+      "placeholder": "Szukaj",
+      "results_for_html": "Wyniki dla „{{ terms }}”:",
+      "results_count": {
+        "zero": "Brak wyników",
+        "one": "{{ count }} wynik",
+        "other": "{{ count }} wyników"
+      },
+      "page": "Strona",
+      "article": "Poczta"
+    },
+    "pagination": {
+      "collections_more": "Więcej kolekcji",
+      "collections_loading": "Ładowanie...",
+      "products_more": "Więcej produktów",
+      "products_loading": "Ładowanie...",
+      "articles_more": "Więcej artykułów",
+      "articles_loading": "Ładowanie...",
+      "comments_more": "Więcej komentarzy",
+      "comments_loading": "Ładowanie...",
+      "search_results_more": "Więcej wyników wyszukiwania",
+      "search_results_loading": "Ładowanie..."
+    },
+    "navigation": {
+      "cancel_html": "lub {{ link }}"
+    },
+    "newsletter_form": {
+      "newsletter_email": "Twój email",
+      "submit": "Subskrybuj",
+      "confirmation": "Dziękuję za zasubskrybowanie!"
+    },
+    "page_title": {
+      "tagged": "otagowano „{{ tags }}”",
+      "pagination": "Strona {{ current_page }}"
+    },
+    "password_page": {
+      "login_form_heading": "Wejdź do sklepu używając hasła:",
+      "login_form_password_placeholder": "Twoje hasło",
+      "login_form_submit": "Wchodzić",
+      "signup_form_email_placeholder": "Adres e-mail",
+      "signup_form_submit": "Powiadom mnie",
+      "signup_form_success": "Wyślemy Ci e-mail tuż przed otwarciem!",
+      "admin_link_html": "Czy jesteś właścicielem sklepu? <a href=\"\/admin\" class=\"text-link\">Zaloguj się tutaj<\/a>",
+      "password_link_html": "Wprowadź hasło",
+      "back_link_html": "Blisko",
+      "powered_by_shopify_html": "Ten sklep będzie obsługiwany przez {{ shopify }}"
+    },
+    "country": {
+      "dropdown_label": "Kraj\/region"
+    },
+    "language": {
+      "dropdown_label": "Język"
+    }
+  },
+  "blogs": {
+    "general": {
+      "view_all_articles": "Zobacz wszystkie artykuły"
+    },
+    "article": {
+      "read_entire_article": "Przeczytaj cały artykuł",
+      "tags": "Tagi",
+      "previous_article": "Poprzedni artykuł",
+      "next_article": "Następny artykuł",
+      "other_articles": "Inne artykuły"
+    },
+    "comments": {
+      "title": "Komentarze ({{ count }})",
+      "comment_title_html": "{{ author }} w dniu <time datetime=\"{{ date }}\">{{ date }}<\/time>",
+      "comments_count": {
+        "zero": "Brak komentarzy",
+        "one": "{{ count }} komentarz",
+        "other": "{{ count }} komentarzy"
+      }
+    },
+    "comment_form": {
+      "title": "zostaw komentarz",
+      "name": "Nazwać",
+      "email": "E-mail",
+      "message": "Wiadomość",
+      "post": "Wyślij komentarz",
+      "moderated": "Pamiętaj, że komentarze muszą zostać zatwierdzone przed opublikowaniem",
+      "success_moderated": "Twój komentarz został pomyślnie opublikowany. Opublikujemy go za chwilę, ponieważ nasz blog jest moderowany.",
+      "success": "Twój komentarz został pomyślnie opublikowany! Dziękuję Ci!"
+    }
+  },
+  "collections": {
+    "general": {
+      "catalog": "Katalog",
+      "collections": "Kolekcje",
+      "view_all_products": "Wyświetl wszystkie produkty",
+      "all_products": "Wszystkie produkty",
+      "products_count": {
+        "zero": "Brak produktów",
+        "one": "{{ count }} produkt",
+        "other": "{{ count }} produktów"
+      },
+      "filter_products_count": "Pokazuje {{ count }} z {{ total }} produktów",
+      "no_collections": "Przepraszamy, obecnie nie ma żadnych kolekcji.",
+      "no_products": "Przepraszamy, aktualnie brak produktów w tej kolekcji.",
+      "filter_and_sort": "Filtruj i sortuj",
+      "sort": "Sortować",
+      "filter": "Filtr",
+      "sort_by": "Sortuj według:",
+      "filter_by": "Filtruj według:",
+      "filters_selected": "Wybrano {{ count }}",
+      "max_price": "Najwyższa cena to {{ price }}",
+      "from": "Od",
+      "to": "W celu",
+      "reset": "Resetowanie",
+      "apply": "Stosować",
+      "clear": "Jasny",
+      "clear_all": "Wyczyść wszystko"
+    }
+  },
+  "products": {
+    "product": {
+      "buy": "Kupić",
+      "from_html": "Od {{ price }}",
+      "on_sale": "Na wyprzedaży",
+      "sold_out": "Wyprzedane",
+      "quantity": "Ilość",
+      "available_units_html": "Dostępne jednostki: <span class='units'>{{ units }}<\/span>",
+      "unavailable": "Niedostępne",
+      "add_to_cart": "Dodaj do koszyka",
+      "pre_order": "Przed Sprzedaż",
+      "adding_to_cart": "Dodawanie produktu...",
+      "adding_to_checkout": "Dodawanie produktu...",
+      "share_on": "Udostępnij w {{ platform}}",
+      "view_in_space": "Zobacz w swojej przestrzeni",
+      "view_in_space_label": "Zobacz w swojej przestrzeni, ładuje element w oknie rozszerzonej rzeczywistości",
+      "total_reviews": {
+        "zero": "Brak recenzji",
+        "one": "{{ count }} opinii",
+        "other": "{{ count }} opinii"
+      }
+    },
+    "zoom": {
+      "next": "Dalej (klawisz strzałki w prawo)",
+      "prev": "Poprzedni (klawisz strzałki w lewo)",
+      "close": "Zamknij (Esc)"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Nazwać",
+      "email": "E-mail",
+      "phone": "Numer telefonu",
+      "message": "Wiadomość",
+      "send": "Wysłać",
+      "post_success": "Dziękujemy za skontaktowanie się z nami. Skontaktujemy się z Tobą tak szybko, jak to możliwe.",
+      "return_to_store": "Wróć do sklepu"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Szczegóły Konta",
+      "user_info_html": "Witamy ponownie, {{ name }}!",
+      "empty": "Nie dodałeś jeszcze żadnego adresu.",
+      "add_address": "Dodaj adres",
+      "edit_addresses": "Edytuj adresy ({{ count }})",
+      "return_to_store": "Wróć do sklepu"
+    },
+    "orders": {
+      "title": "Historia zamówień",
+      "empty": "Nie złożyłeś jeszcze żadnych zamówień.",
+      "order": "Zamów {{ id }}",
+      "order_description_html": "<b>{{ date }}<\/b> — {{ order }} został umieszczony, a jego obecny stan to {{ financial_status }} i {{ fulfillment_status }}",
+      "new_order": "Utwórz nowe zamówienie"
+    },
+    "order": {
+      "section_title": "Historia zamówień",
+      "title": "Zamów {{ name }}",
+      "date": "Umieszczony na {{ date }}",
+      "cancelled": "Zamówienie anulowane w dniu {{ date }}",
+      "cancelled_reason": "Powodem było: {{ reason }}",
+      "billing_address": "Adres rozliczeniowy",
+      "payment_status": "Status płatności",
+      "shipping_address": "adres wysyłki",
+      "fulfillment_status": "Stan realizacji",
+      "discount": "Zniżka",
+      "subtotal": "Suma częściowa",
+      "shipping": "Wysyłka",
+      "tax": "Podatek",
+      "total": "Całkowity",
+      "return_to_account": "Wróć do swojego konta"
+    },
+    "activate_account": {
+      "title": "Aktywuj konto",
+      "subtitle": "Utwórz hasło, aby aktywować konto.",
+      "password": "Hasło",
+      "password_confirm": "Potwierdź hasło",
+      "submit": "Aktywuj konto",
+      "submitting": "Aktywuję...",
+      "cancel": "Odrzuć zaproszenie",
+      "return_to_store": "Wróć do sklepu"
+    },
+    "addresses": {
+      "section_title": "Szczegóły Konta",
+      "title": "Twoja książka adresowa",
+      "subtitle": "To są adresy powiązane z Twoim kontem.",
+      "empty": "Twoja książka adresowa jest obecnie pusta.",
+      "default": "Adres domyślny",
+      "add_new": "Nowy adres",
+      "edit_address": "Edytuj adres",
+      "recipient": "Odbiorca",
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "company": "Spółka",
+      "address": "Adres",
+      "address1": "Adres 1",
+      "address2": "adres 2",
+      "city": "Miasto",
+      "country": "Kraj",
+      "province": "Województwo",
+      "zip": "Kod pocztowy\/Pocztowy",
+      "phone": "Telefon",
+      "phone_label": "Tel.",
+      "set_default_label": "Ustawić jako adres domyślny?",
+      "set_default_action": "Tak proszę.",
+      "add": "Dodaj nowy adres",
+      "adding": "Dodawanie...",
+      "update": "Zaktualizuj adres",
+      "updating": "Aktualizuję...",
+      "cancel": "Anulować",
+      "edit": "Edytować",
+      "delete": "Usunąć",
+      "delete_question": "Czy na pewno chcesz usunąć ten adres?",
+      "return": "Wróć do swojego konta"
+    },
+    "login": {
+      "title": "Zaloguj się",
+      "subtitle": "Rozpocznij nową sesję.",
+      "email": "E-mail",
+      "password": "Hasło",
+      "sign_in": "Zaloguj się",
+      "signing_in": "Rozpoczynam sesję...",
+      "forgot_password": "Zapomniałeś hasła?",
+      "register_action": "Stwórz nowe konto",
+      "password_title": "Zresetuj swoje hasło",
+      "password_subtitle": "Otrzymasz e-mail z instrukcjami.",
+      "password_sent": "Wysłaliśmy Ci wiadomość e-mail z łączem do aktualizacji hasła.",
+      "password_action": "Wyślij instrukcje",
+      "password_cancel": "Anulować",
+      "guest_title": "Nie chcesz się zarejestrować?",
+      "guest_subtitle": "Kontynuuj jako gość.",
+      "guest_action": "Pomiń rejestrację"
+    },
+    "reset_password": {
+      "title": "Zresetuj hasło do konta",
+      "subtitle": "Wprowadź nowe hasło dla {{ email }}",
+      "password": "Hasło",
+      "password_confirm": "Potwierdź hasło",
+      "submit": "Zresetuj hasło",
+      "submitting": "Aktualizuję...",
+      "return_to_store": "Wróć do sklepu"
+    },
+    "register": {
+      "title": "Stwórz nowe konto",
+      "subtitle": "Podaj nam swoje dane kontaktowe.",
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "email": "E-mail",
+      "password": "Hasło",
+      "submit": "Utwórz konto",
+      "submitting": "Rejestracyjny...",
+      "login": "Posiadasz już konto?",
+      "return_to_store": "Wróć do sklepu"
+    }
+  },
+  "home_page": {
+    "hero": {
+      "button_to_store": "Przeglądaj nasze produkty",
+      "photo_credits_html": "Zdjęcie autorstwa {{ author }} pod {{ license }}"
+    },
+    "featured_content": {
+      "button_to_store": "Przeglądaj nasze produkty"
+    },
+    "collection": {
+      "button_to_store": "Przeglądaj więcej produktów",
+      "onboarding_product_name": "Tytuł produktu",
+      "onboarding_product_vendor": "Sprzedawca"
+    },
+    "featured_blog": {
+      "onboarding_blog_title": "Tytuł Twojego posta",
+      "onboarding_blog_excerpt": "Twój sklep nie opublikował jeszcze żadnych postów na blogu. Blog może służyć do rozmów o premierach nowych produktów, wskazówkach lub innych nowościach, którymi chcesz podzielić się z klientami. Możesz sprawdzić blog e-commerce Shopify, aby uzyskać inspiracje i porady dotyczące własnego sklepu i bloga."
+    },
+    "onboarding": {
+      "no_content_html": "Ta sekcja nie zawiera obecnie żadnej treści.<br>Dodaj treść do tej sekcji za pomocą paska bocznego.",
+      "add_collection": "Nazwa kolekcji",
+      "product_title": "Tytuł produktu",
+      "product_description_html": "<p>Opis produktu. Połącz tekst z produktem, aby wyróżnić funkcje. Ten skórzany nosidełko sprawi, że Twój podwójny koc będzie doskonałym towarzyszem na kempingu. Koce obozowe zostały po raz pierwszy zaprojektowane, aby sprostać rygorystycznym wymaganiom dzikiego i nieokiełznanego północno-zachodniego Pacyfiku i były ulubieńcem pierwszych pasterzy owiec na północnym zachodzie. Dziś te ciepłe i wytrzymałe koce oferują wyjątkową obsługę i surową stylizację, która zapewni lata ciepła i komfortu.<\/p>"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Twój wózek",
+      "remove": "Usunąć",
+      "subtotal": "Suma częściowa",
+      "update": "Zaktualizuj koszyk",
+      "checkout": "Realizuj zakup",
+      "checking_out": "Realizuj zakup...",
+      "add_more_products": "Kontynuować zakupy",
+      "seller_instructions": "Specjalne instrukcje dla sprzedającego:",
+      "empty": "Wygląda na to, że Twój koszyk jest obecnie pusty.",
+      "continue_browsing": "Przeglądaj dalej",
+      "currency_conversion_html": "{{ name }} przetwarza wszystkie zamówienia w {{ currency }}. Podczas gdy zawartość koszyka jest obecnie wyświetlana w <span class='selected-currency'><\/span>, do kasy użyjesz {{ currency }} po najbardziej aktualnym kursie wymiany.",
+      "taxes_and_shipping_policy_at_checkout_html": "Podatki i <a href=\"{{ link }}\">dostawa<\/a> naliczane przy kasie.",
+      "taxes_included_but_shipping_at_checkout": "Podatek wliczony w cenę i koszt wysyłki obliczany przy kasie.",
+      "taxes_included_and_shipping_policy_html": "Z wliczonym podatkiem. <a href=\"{{ link }}\">Wysyłka<\/a> obliczana przy kasie.",
+      "taxes_and_shipping_at_checkout": "Podatki i koszty wysyłki naliczane przy kasie."
+    }
+  },
+  "map": {
+    "errors": {
+      "address_error": "Błąd podczas wyszukiwania tego adresu",
+      "address_no_results": "Brak wyników dla tego adresu",
+      "address_query_limit_html": "Przekroczyłeś limit wykorzystania interfejsu Google API. Rozważ przejście na <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">abonament Premium<\/a>.",
+      "auth_error_html": "Wystąpił problem z uwierzytelnieniem Twojego klucza interfejsu API Map Google."
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Zobacz informacje o sklepie",
+      "check_other_stores": "Sprawdź dostępność w innych sklepach",
+      "pick_up_available": "Dostępny odbiór",
+      "pick_up_currently_unavailable": "Odbiór jest obecnie niedostępny",
+      "pick_up_available_at_html": "Odbiór dostępny pod adresem <b>{{ location_name }}<\/b>",
+      "pick_up_unavailable_at_html": "Odbiór jest obecnie niedostępny pod adresem <b>{{ location_name }}<\/b>"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Oto Twoja karta podarunkowa {{ value }} na {{ shop }}!",
+      "subtext": "Oto Twoja karta podarunkowa!",
+      "amount_left_html": "{{ amount }} <small>w lewo<\/small>",
+      "redeem": "Użyj tego kodu w kasie, aby zrealizować kartę podarunkową.",
+      "shop_link": "Rozpocznij zakupy",
+      "print": "Wydrukować",
+      "disabled": "Ta karta podarunkowa została wyłączona",
+      "expired": "Wygasł {{ expiry }}",
+      "active": "Wygasa {{ expiry }}",
+      "add_apple_wallet": "Dodaj do portfela Apple"
+    }
+  },
+  "layout": {
+    "side_nav": {
+      "account": "Twoje konto",
+      "logout": "Wyloguj",
+      "signin": "Zaloguj się",
+      "back": "Z powrotem"
+    },
+    "footer": {
+      "newsletter_email": "Twój email...",
+      "newsletter_submit": "OK",
+      "newsletter_success": "Dziękuję za zasubskrybowanie.",
+      "platform": "{{ name }} na {{ platform }}",
+      "accepted_payments": "Akceptowane płatności",
+      "copyright_html": "&copy; Prawa autorskie {{ year }} {{ shop_name }}"
+    }
+  },
+  "date_formats": {
+    "day_month_and_year": "%B %e, %Y",
+    "month_and_year": "%B %Y",
+    "date_and_time": "%B %e, %Y w %I:%M %P"
+  }
+}

@@ -1,0 +1,255 @@
+<div class="content banner-with-text position-{{ section.settings.text_position }} align-{{ section.settings.text_align }} with-background {% render 'content-classes', scope: section %}">
+  <div class="background">
+    {% if section.settings.image %}
+      <div class="image"></div>
+      <style type="text/css">
+        #shopify-section-{{ section.id }} .image {
+          background-position: {{ section.settings.image_position }};
+          background-repeat: no-repeat;
+          {% render 'resp-bg-img', image: section.settings.image, size: '4096x' %}
+        }
+
+        {% liquid
+          if section.settings.image_for_mobile != blank
+            assign mobile_image = section.settings.image_for_mobile
+          else
+            assign mobile_image = section.settings.image
+          endif
+          assign sizes = "2048,1944,1728,1512,1024,768,512,375" | split: ","
+        %}
+
+        {% for size in sizes %}
+          {% liquid
+            assign size_x = size | append: 'x'
+            if size == "512" or size == "375"
+              assign image = mobile_image
+            else
+              assign image = section.settings.image
+            endif
+          %}
+          @media screen and (max-width: {{ size }}px) {
+            #shopify-section-{{ section.id }} .image {
+              {% render 'resp-bg-img', image: image, size: size_x %}
+            }
+          }
+        {% endfor %}
+      </style>
+    {% else %}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+  <div class="info">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      {{ section.settings.text }}
+    {% endif %}
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <p>
+        <a href="{{ section.settings.button_link }}" class="btn action small">
+          {{ section.settings.button_label | escape }}
+        </a>
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.banner-with-text.name",
+    "class": "banner-with-text-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "t:sections.banner-with-text.settings.title.label",
+        "default": {
+          "en": "Banner with text",
+          "es": "Bandera con texto",
+          "it": "Banner con testo",
+          "fr": "Bannière avec texte",
+          "de": "Banner mit Text",
+          "ca": "Banner amb text",
+          "ja": "テキスト付きバナー",
+          "pt-BR": "Banner com texto",
+          "pt-PT": "Banner com texto",
+          "ru": "Баннер с текстом",
+          "nl": "Banner met tekst",
+          "ar": "لافتة مع نص",
+          "zh-CN": "带有文字的横幅",
+          "zh-TW": "帶有文字的橫幅"
+        }
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "t:sections.banner-with-text.settings.title.label",
+        "default": {
+          "en": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "es": "<p>Vincula un texto largo con una imagen para dar visibilidad a tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad, estilo, o incluso ofrece una reseña.</p>",
+          "it": "<p>Abbina un testo grande a un'immagine per mettere a fuoco il prodotto, la raccolta o il post del blog che hai scelto. Aggiungi dettagli su disponibilità, stile o persino fornisci una recensione.</p>",
+          "fr": "<p>Associez un texte de grande taille à une image pour mettre l'accent sur le produit, la collection ou l'article de blog que vous avez choisi. Ajoutez des détails sur la disponibilité, le style ou même donnez votre avis.</p>",
+          "de": "<p>Kombinieren Sie großen Text mit einem Bild, um Ihr ausgewähltes Produkt, Ihre Sammlung oder Ihren Blogbeitrag hervorzuheben. Fügen Sie Details zu Verfügbarkeit und Stil hinzu oder geben Sie sogar eine Bewertung ab.</p>",
+          "ca": "<p>Combina el text gran amb una imatge per centrar-se en el producte, la col·lecció o la publicació del bloc que escolliu. Afegeix detalls sobre la disponibilitat, l'estil o fins i tot proporciona una ressenya.</p>",
+          "ja": "<p>大きなテキストと画像を組み合わせて、選択した製品、コレクション、またはブログ投稿に焦点を合わせます。 在庫状況やスタイルの詳細を追加したり、レビューを提供したりすることもできます。</p>",
+          "pt-BR": "<p>Emparelhe um texto grande com uma imagem para dar foco ao seu produto, coleção ou postagem de blog escolhido. Adicione detalhes sobre disponibilidade, estilo ou até mesmo forneça uma avaliação.</p>",
+          "pt-PT": "<p>Emparelhe um texto grande com uma imagem para dar foco ao seu produto, coleção ou postagem de blog escolhido. Adicione detalhes sobre disponibilidade, estilo ou até mesmo forneça uma avaliação.</p>",
+          "ru": "<p>Сочетайте крупный текст с изображением, чтобы привлечь внимание к выбранному продукту, коллекции или записи в блоге. Добавьте информацию о наличии, стиле или даже оставьте отзыв.</p>",
+          "nl": "<p>Koppel grote tekst met een afbeelding om de focus te leggen op uw gekozen product, collectie of blogpost. Voeg details toe over beschikbaarheid, stijl of geef zelfs een recensie.</p>",
+          "ar": "<p> قم بإقران نص كبير بصورة للتركيز على المنتج أو المجموعة أو مشاركة المدونة التي اخترتها. أضف تفاصيل عن مدى التوفر أو الأسلوب أو حتى قدم مراجعة. </p>",
+          "zh-CN": "<p>将大文本与图片配对，以突出您选择的产品、收藏或博客文章。 添加有关可用性、样式的详细信息，甚至提供评论。</p>",
+          "zh-TW": "<p>將大文本與圖片配對，以突出您選擇的產品、收藏或博客文章。 添加有關可用性、樣式的詳細信息，甚至提供評論。</p>"
+        }
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "t:sections.banner-with-text.settings.image.label"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_for_mobile",
+        "label": "t:sections.banner-with-text.settings.image_for_mobile.label",
+        "info": "t:sections.banner-with-text.settings.image_for_mobile.info"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "t:sections.banner-with-text.settings.image_position.label",
+        "default": "center center",
+        "options": [
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__1",
+            "value": "top left"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__2",
+            "value": "top center"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__3",
+            "value": "top right"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__4",
+            "value": "center left"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__5",
+            "value": "center center"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__6",
+            "value": "center right"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__7",
+            "value": "bottom left"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__8",
+            "value": "bottom center"
+          },
+          {
+            "label": "t:sections.banner-with-text.settings.image_position.options__9",
+            "value": "bottom right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "t:sections.banner-with-text.settings.text_position.label",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.banner-with-text.settings.text_position.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.banner-with-text.settings.text_position.options__2"
+          },
+          {
+            "value": "right",
+            "label": "t:sections.banner-with-text.settings.text_position.options__3"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "t:sections.banner-with-text.settings.text_align.label",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.banner-with-text.settings.text_align.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.banner-with-text.settings.text_align.options__2"
+          },
+          {
+            "value": "right",
+            "label": "t:sections.banner-with-text.settings.text_align.options__3"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "t:sections.banner-with-text.settings.button_label.label",
+        "default": {
+          "en": "Explore",
+          "es": "Explorar"
+        }
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "t:sections.banner-with-text.settings.button_link.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.settings.header.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "expanded",
+        "label": "t:sections.settings.expanded.label",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "expanded_content",
+        "label": "t:sections.settings.expanded_content.label",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "collapsed",
+        "label": "t:sections.settings.collapsed.label",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_on_desktop",
+        "label": "t:sections.settings.show_on_desktop.label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_on_mobile",
+        "label": "t:sections.settings.show_on_mobile.label",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.banner-with-text.presets.name"
+      }
+    ]
+  }
+{% endschema %}

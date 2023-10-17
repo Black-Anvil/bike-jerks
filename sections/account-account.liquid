@@ -1,0 +1,63 @@
+<div class="content">
+  <div class="account-details expanded">
+    <h2 class="section-title">{{ 'customer.account.user_info_html' | t: name: customer.name }}</h2>
+    <h3>{{ 'customer.account.title' | t }}</h3>
+    <div class="info">
+      <h4>{{ customer.name }}</h4>
+      <p>{{ customer.email }}</p>
+      <p class="address">
+        {% if customer.default_address %}
+          {% capture address %}
+            {{ customer.default_address.address1 }}{% if customer.default_address.address2 != "" %}, {{ customer.default_address.address2 }}{% endif %} 
+            {% if customer.default_address.city != "" %}<br>{{ customer.default_address.city }},{% endif %}
+            {% if customer.default_address.province_code != "" %} {{ customer.default_address.province_code | upcase }}{% endif %}
+            {% if customer.default_address.zip != "" %} {{ customer.default_address.zip | upcase }}{% endif %}
+            {% if customer.default_address.country != "" %}<br>{{ customer.default_address.country }}{% endif %}
+          {% endcapture %}  
+          {{ address }}
+        {% else %}
+          {{ 'customer.account.empty' | t }}
+        {% endif %}
+      </p>
+    </div>
+    <div class="row">
+      {% if customer.addresses_count == 0 %}
+        <a href="{{ routes.account_addresses_url }}" class="btn small action">{{ 'customer.account.add_address' | t }}</a>
+      {% else %}
+        <a href="{{ routes.account_addresses_url }}" class="btn small action">{{ 'customer.account.edit_addresses' | t: count: customer.addresses_count }}</a>
+      {% endif %}
+      <a href="{{ routes.account_logout_url }}" class="btn small">{{ 'layout.side_nav.logout' | t }}</a>
+    </div>
+  </div>
+  <div class="orders-details expanded">
+    <h3>{{ 'customer.orders.title' | t }}</h3>
+    {% if customer.orders.size > 0 %}
+      <div class="orders">
+        {% for order in customer.orders %}
+          <div class="order">
+            {% capture date %}{{ order.created_at | date: format: 'day_month_and_year' }}{% endcapture %}
+            {% capture order_link %}<a class="underscore" href="{{ order.customer_url }}">{{ 'customer.orders.order' | t: id: order.name }}</a>{% endcapture %}
+            {% capture financial_status %}<span class="highlight {{ order.financial_status_label | handleize }}">{{ order.financial_status_label }}</span>{% endcapture %}
+            {% capture fulfillment_status %}<span class="highlight {{ order.fulfillment_status_label | handleize }}">{{ order.fulfillment_status_label }}</span>{% endcapture %}
+            {{ 'customer.orders.order_description_html' | t: date: date, order: order_link, financial_status: financial_status, fulfillment_status: fulfillment_status }}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="row">
+        <p>{{ 'customer.orders.empty' | t }}</p>
+      </div>
+    {% endif %}
+
+    <div class="row">
+      <a class="btn action small" href="{{ routes.root_url }}">{{ 'customer.orders.new_order' | t }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.account-account.name",
+  "class": "section-account"
+}
+{% endschema %}

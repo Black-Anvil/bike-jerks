@@ -1,0 +1,484 @@
+{% unless section.settings.footer_hidden %}
+  {% unless template == 'index' and section.settings.home_footer_hidden %}
+    <div class="footer" data-section-id="{{ section.id }}" data-section-type="footer" role="contentinfo">
+      <div class="content with-padding {% render 'content-classes', scope: section %}">
+        {% if section.blocks.size > 0 %}
+          <div class="row cols blocks-{{ section.blocks.size }}">
+            {% for block in section.blocks %}
+              <div class="col" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}
+                  <h1>{{ block.settings.title | escape }}</h1>
+                {% endif %}
+                {% case block.type %}
+                  {% when 'menu' %}
+                    {% assign menu = linklists[block.settings.menu] %}
+                    {% if menu.links.size > 7 %}
+                      {% assign cols = 2 %}
+                    {% else %}
+                      {% assign cols = 1 %}
+                    {% endif %}
+
+                    <p class="cols-{{ cols }}">
+                      {% for link in menu.links %}
+                        <a href="{{ link.url }}">{{ link.title }}</a><br>
+                      {% endfor %}
+                    </p>
+
+                  {% when 'contact' %}
+                    <p>
+                      {%- if block.settings.footer_contact_twitter != blank -%}
+                        <a href="https://twitter.com/{{ block.settings.footer_contact_twitter }}" target="_blank" title="{{ shop.name }} on Twitter"><i class="fc fc-twitter"></i>@{{ block.settings.footer_contact_twitter }}</a><br>
+                      {%- endif -%}
+                      {%- if block.settings.footer_contact_email != blank -%}
+                        <a href="mailto:{{ block.settings.footer_contact_email }}"><i class="fc fc-envelope-o"></i>{{ block.settings.footer_contact_email }}</a><br>
+                      {%- endif -%}
+                      {%- if block.settings.footer_contact_telephone != blank -%}
+                        <a href="tel:{{ block.settings.footer_contact_telephone }}"><i class="fc fc-phone"></i>{{ block.settings.footer_contact_telephone }}</a><br>
+                      {%- endif -%}
+                      {%- if block.settings.footer_contact_whatsapp != blank -%}
+                        <a href="https://api.whatsapp.com/send?phone={{ block.settings.footer_contact_whatsapp }}" target="_blank"><i class="fc fc-whatsapp"></i>{{ block.settings.footer_contact_whatsapp }}</a>
+                      {%- endif -%}
+                    </p>
+
+                  {% when 'text' %}
+                    <div class="rte">
+                      {%- if block.settings.text != blank -%}
+                        {{ block.settings.text }}
+                      {%- endif -%}
+                    </div>
+
+                  {% when 'newsletter' %}
+                    {% render 'footer-newsletter-form' %}
+
+                  {% when 'social' %}
+                    {% render 'connect' %}
+
+                {% endcase %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="bottom">
+          <div class="left">
+            {% if shop.enabled_payment_types != empty and section.settings.footer_show_payments %}
+              <div class="extra">
+                {{ 'layout.footer.accepted_payments' | t }}:
+                <div class="icons">
+                  {% for type in shop.enabled_payment_types %}
+                    {{ type | payment_type_svg_tag: class:'payment-icon' }}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+            <div class="extra">
+              {% assign year = 'now' | date: '%Y' %}
+              {% capture shop_name %}
+                {{ shop.name | link_to: '/' }}
+              {% endcapture %}
+              {{ 'layout.footer.copyright_html' | t: year: year, shop_name: shop_name }}<br>
+              <a target="_blank" href="https://blackanvildigital.com">
+                <div class="black-anvil">
+                  <p>Forged by Black Anvil Digital Foundry</p>
+                  <img src="{{ 'black_anvil_inverted.svg' | asset_url }}">
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="right">
+            {% render 'language-and-country-selectors', extended: true %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+{% endunless %}
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "footer_show_payments",
+      "label": "t:sections.footer.settings.footer_show_payments.label",
+      "info": "t:sections.footer.settings.footer_show_payments.info",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_footer_hidden",
+      "label": "t:sections.footer.settings.home_footer_hidden.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "footer_hidden",
+      "label": "t:sections.footer.settings.footer_hidden.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language_selector",
+      "label": "t:sections.footer.settings.show_language_selector.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "t:sections.footer.settings.show_country_selector.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "t:sections.footer.blocks.menu.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.menu.settings.title.label",
+          "default": {
+            "ar": "روابط سريعة",
+            "bg": "Бързи връзки",
+            "ca": "Links ràpids",
+            "cs": "Rychlé odkazy",
+            "da": "Hurtige links",
+            "de": "Schnelle Links",
+            "el": "Γρήγοροι σύνδεσμοι",
+            "en": "Quick links",
+            "es": "Enlaces rápidos",
+            "fi": "Pikalinkit",
+            "fr": "Liens rapides",
+            "he": "קישורים מהירים",
+            "hr": "Brze veze",
+            "hu": "Gyors linkek",
+            "id": "Tautan langsung",
+            "it": "Link veloci",
+            "ja": "クイックリンク",
+            "ko": "빠른 링크",
+            "lt": "Greitos nuorodos",
+            "nb": "Hurtigkoblinger",
+            "nl": "Snelle links",
+            "pl": "Szybkie linki",
+            "pt-BR": "Links Rápidos",
+            "pt-PT": "Links Rápidos",
+            "ro": "Legături rapide",
+            "ru": "Быстрые ссылки",
+            "sk": "Rýchle odkazy",
+            "sl": "Hitre povezave",
+            "sv": "Snabblänkar",
+            "th": "ลิงค์ด่วน",
+            "tr": "Hızlı Linkler",
+            "vi": "Đường dẫn nhanh",
+            "zh-CN": "快速链接",
+            "zh-TW": "快速鏈接"
+          }
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.footer.blocks.menu.settings.menu.label",
+          "info": "t:sections.footer.blocks.menu.settings.menu.info",
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "t:sections.footer.blocks.contact.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.contact.settings.title.label",
+          "default": {
+            "ar": "اتصل بنا",
+            "bg": "Свържете се с нас",
+            "ca": "Contacta amb nosaltres",
+            "cs": "Kontaktujte nás",
+            "da": "Kontakt os",
+            "de": "Kontaktiere uns",
+            "el": "Επικοινωνήστε μαζί μας",
+            "en": "Contact us",
+            "es": "Contáctenos",
+            "fi": "Ota meihin yhteyttä",
+            "fr": "Contactez-nous",
+            "he": "צור קשר",
+            "hr": "Kontaktirajte nas",
+            "hu": "Lépjen kapcsolatba velünk",
+            "id": "Hubungi kami",
+            "it": "Contattaci",
+            "ja": "お問い合わせ",
+            "ko": "문의하기",
+            "lt": "Susisiekite su mumis",
+            "nb": "Kontakt oss",
+            "nl": "Neem contact op",
+            "pl": "Skontaktuj się z nami",
+            "pt-BR": "Contate-Nos",
+            "pt-PT": "Contate-Nos",
+            "ro": "Contactează-ne",
+            "ru": "Связаться с нами",
+            "sk": "Kontaktuj nás",
+            "sl": "Kontaktiraj nas",
+            "sv": "Kontakta oss",
+            "th": "ติดต่อเรา",
+            "tr": "Bize Ulaşın",
+            "vi": "Liên hệ chúng tôi",
+            "zh-CN": "联系我们",
+            "zh-TW": "聯繫我們"
+          }
+        },
+        {
+          "type": "text",
+          "id": "footer_contact_email",
+          "label": "t:sections.footer.blocks.contact.settings.footer_contact_email.label",
+          "info": "t:sections.footer.blocks.contact.settings.footer_contact_email.info",
+          "default": "support@shopify.com"
+        },
+        {
+          "type": "text",
+          "id": "footer_contact_twitter",
+          "label": "t:sections.footer.blocks.contact.settings.footer_contact_twitter.label",
+          "info": "t:sections.footer.blocks.contact.settings.footer_contact_twitter.info",
+          "default": "shopify"
+        },
+        {
+          "type": "text",
+          "id": "footer_contact_telephone",
+          "label": "t:sections.footer.blocks.contact.settings.footer_contact_telephone.label",
+          "info": "t:sections.footer.blocks.contact.settings.footer_contact_telephone.info",
+          "default": "+1 917 (123) 4567"
+        },
+        {
+          "type": "text",
+          "id": "footer_contact_whatsapp",
+          "label": "t:sections.footer.blocks.contact.settings.footer_contact_whatsapp.label",
+          "info": "t:sections.footer.blocks.contact.settings.footer_contact_whatsapp.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.text.settings.title.label",
+          "default": {
+            "ar": "معلومات عنا",
+            "bg": "За нас",
+            "ca": "Sobre nosaltres",
+            "cs": "O nás",
+            "da": "Om os",
+            "de": "Über uns",
+            "el": "Σχετικά με εμάς",
+            "en": "About us",
+            "es": "Sobre nosotros",
+            "fi": "Meistä",
+            "fr": "À propos de nous",
+            "he": "עלינו",
+            "hr": "O nama",
+            "hu": "Rólunk",
+            "id": "Tentang kami",
+            "it": "Chi siamo",
+            "ja": "私たちに関しては",
+            "ko": "회사 소개",
+            "lt": "Apie mus",
+            "nb": "Om oss",
+            "nl": "Over ons",
+            "pl": "O nas",
+            "pt-BR": "Sobre nós",
+            "pt-PT": "Sobre nós",
+            "ro": "Despre noi",
+            "ru": "О нас",
+            "sk": "O nás",
+            "sl": "O nas",
+            "sv": "Om oss",
+            "th": "เกี่ยวกับเรา",
+            "tr": "Hakkımızda",
+            "vi": "Về chúng tôi",
+            "zh-CN": "关于我们",
+            "zh-TW": "關於我們"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.footer.blocks.text.settings.text.label",
+          "default": {
+            "ar": "<p> شارك تفاصيل المتجر أو العروض الترويجية أو محتوى العلامة التجارية مع عملائك. </p>",
+            "bg": "<p>Споделяйте подробности за магазина, промоции или съдържание на марката с клиентите си.</p>",
+            "ca": "<p>Comparteix els detalls de la botiga, les promocions o el contingut de la marca amb els teus clients.</p>",
+            "cs": "<p>Sdílejte podrobnosti o obchodě, propagačních akcích nebo obsah značky se svými zákazníky.</p>",
+            "da": "<p>Del butiksoplysninger, kampagner eller brandindhold med dine kunder.</p>",
+            "de": "<p>Teilen Sie Geschäftsdetails, Werbeaktionen oder Markeninhalte mit Ihren Kunden.</p>",
+            "el": "<p>Μοιραστείτε λεπτομέρειες καταστήματος, προωθήσεις ή περιεχόμενο επωνυμίας με τους πελάτες σας.</p>",
+            "en": "<p>Share store details, promotions, or brand content with your customers.</p>",
+            "es": "<p>Comparta detalles de la tienda, promociones o contenido de la marca con sus clientes.</p>",
+            "fi": "<p>Jaa kaupan tietoja, tarjouksia tai brändisisältöä asiakkaidesi kanssa.</p>",
+            "fr": "<p>Partagez les détails du magasin, les promotions ou le contenu de la marque avec vos clients.</p>",
+            "he": "<p>שתף פרטי חנות, מבצעים או תוכן מותג עם הלקוחות שלך.</p>",
+            "hr": "<p>Podijelite pojedinosti o trgovini, promocije ili sadržaj robne marke sa svojim klijentima.</p>",
+            "hu": "<p>Ossza meg az üzlet részleteit, promócióit vagy márkatartalmát ügyfeleivel.</p>",
+            "id": "<p>Bagikan detail toko, promosi, atau konten merek dengan pelanggan Anda.</p>",
+            "it": "<p>Condividi i dettagli del negozio, le promozioni o i contenuti del brand con i tuoi clienti.</p>",
+            "ja": "<p>ストアの詳細、プロモーション、またはブランドコンテンツを顧客と共有します。</p>",
+            "ko": "<p>매장 세부정보, 프로모션 또는 브랜드 콘텐츠를 고객과 공유하세요.</p>",
+            "lt": "<p>Bendrinkite išsamią parduotuvės informaciją, reklamas ar prekės ženklo turinį su savo klientais.</p>",
+            "nb": "<p>Del butikkdetaljer, kampanjer eller merkevareinnhold med kundene dine.</p>",
+            "nl": "<p>Deel winkeldetails, promoties of merkinhoud met uw klanten.</p>",
+            "pl": "<p>Udostępnij klientom szczegóły sklepu, promocje lub treści związane z marką.</p>",
+            "pt-BR": "<p>Compartilhe detalhes da loja, promoções ou conteúdo da marca com seus clientes.</p>",
+            "pt-PT": "<p>Compartilhe detalhes da loja, promoções ou conteúdo da marca com seus clientes.</p>",
+            "ro": "<p>Distribuiți clienților dvs. detaliile magazinului, promoțiile sau conținutul mărcii.</p>",
+            "ru": "<p>Поделитесь информацией о магазине, рекламными акциями или контентом бренда со своими покупателями.</p>",
+            "sk": "<p>Zdieľajte podrobnosti o obchode, propagačné akcie alebo obsah značky so svojimi zákazníkmi.</p>",
+            "sl": "<p>Dajte podrobnosti o trgovini, promocije ali vsebino blagovne znamke s svojimi strankami.</p>",
+            "sv": "<p>Dela butiksinformation, kampanjer eller varumärkesinnehåll med dina kunder.</p>",
+            "th": "<p>แชร์รายละเอียดร้านค้า โปรโมชัน หรือเนื้อหาแบรนด์กับลูกค้าของคุณ</p>",
+            "tr": "<p>Mağaza ayrıntılarını, promosyonları veya marka içeriğini müşterilerinizle paylaşın.</p>",
+            "vi": "<p> Chia sẻ thông tin chi tiết về cửa hàng, chương trình khuyến mãi hoặc nội dung thương hiệu với khách hàng của bạn. </p>",
+            "zh-CN": "<p>与您的客户分享商店详情、促销或品牌内容。</p>",
+            "zh-TW": "<p>與您的客戶分享商店詳情、促銷或品牌內容。</p>"
+          }
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "t:sections.footer.blocks.social.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.social.settings.title.label",
+          "default": {
+            "ar": "تابعنا",
+            "bg": "Последвай ни",
+            "ca": "Segueix-nos",
+            "cs": "Následuj nás",
+            "da": "Følg os",
+            "de": "Folge uns",
+            "el": "Ακολουθησε μας",
+            "en": "Follow us",
+            "es": "Síganos",
+            "fi": "Seuraa meitä",
+            "fr": "Suivez nous",
+            "he": "עקוב אחרינו",
+            "hr": "Prati nas",
+            "hu": "Kövess minket",
+            "id": "Ikuti kami",
+            "it": "Seguici",
+            "ja": "フォローする",
+            "ko": "팔로우",
+            "lt": "Sekite mus",
+            "nb": "Følg oss",
+            "nl": "Volg ons",
+            "pl": "Podążaj za nami",
+            "pt-BR": "Siga-nos",
+            "pt-PT": "Siga-nos",
+            "ro": "Urmează-ne",
+            "ru": "Подписывайтесь на нас",
+            "sk": "Nasleduj nás",
+            "sl": "Sledi nam",
+            "sv": "Följ oss",
+            "th": "ตามเรามา",
+            "tr": "Bizi takip et",
+            "vi": "Theo chúng tôi",
+            "zh-CN": "跟着我们",
+            "zh-TW": "跟著我們"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.footer.blocks.social.settings.paragraph.content"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "t:sections.footer.blocks.newsletter.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.newsletter.settings.title.label",
+          "default": {
+            "ar": "النشرة الإخبارية",
+            "bg": "бюлетин",
+            "ca": "Butlletí informatiu",
+            "cs": "Zpravodaj",
+            "da": "Nyhedsbrev",
+            "de": "Newsletter",
+            "el": "Ενημερωτικό δελτίο",
+            "en": "Newsletter",
+            "es": "Boletin informativo",
+            "fi": "Uutiskirje",
+            "fr": "Bulletin",
+            "he": "ניוזלטר",
+            "hr": "bilten",
+            "hu": "Hírlevél",
+            "id": "Buletin",
+            "it": "Notiziario",
+            "ja": "ニュースレター",
+            "ko": "뉴스 레터",
+            "lt": "Naujienlaiškis",
+            "nb": "Nyhetsbrev",
+            "nl": "Nieuwsbrief",
+            "pl": "Biuletyn",
+            "pt-BR": "Boletim de Notícias",
+            "pt-PT": "Boletim de Notícias",
+            "ro": "Buletin informativ",
+            "ru": "Новостная рассылка",
+            "sk": "Newsletter",
+            "sl": "glasilo",
+            "sv": "Nyhetsbrev",
+            "th": "จดหมายข่าว",
+            "tr": "Bülten",
+            "vi": "Bản tin",
+            "zh-CN": "通讯",
+            "zh-TW": "通訊"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.footer.blocks.newsletter.settings.paragraph.content"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "menu"
+      },
+      {
+        "type": "contact"
+      },
+      {
+        "type": "text"
+      },
+      {
+        "type": "social"
+      }
+    ]
+  }
+}
+{% endschema %}

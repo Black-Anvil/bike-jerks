@@ -1,0 +1,156 @@
+{% assign blog = blogs[section.settings.blog] %}
+<div class="content featured-blog {% render 'content-classes', scope: section %}">
+  <div class="inner with-layout-options {{ settings.content_layout }}" style="max-width: {{ section.settings.max_width }}px;">
+    {% unless section.settings.title == blank %}
+      <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    {% endunless %}
+    {% assign mod = section.settings.post_limit | at_most: blog.articles.size | modulo: 2 %}
+    <div class="posts {{ section.settings.layout }} {% if section.settings.layout == "grid" and mod == 0 %} grid-with-even-posts{% endif %} {% if blog.articles.size == 1 %}one{% endif %}">
+      {% liquid
+        unless blog.empty?
+          for article in blog.articles limit: section.settings.post_limit
+            render 'post' blog: blog, article: article
+          endfor
+        else
+          for i in (1..section.settings.post_limit)
+            render 'post-onboarding', index: i
+          endfor
+        endunless
+      %}
+    </div>
+    {% unless blog.empty? %}
+      {% if blog.articles_count > section.settings.post_limit %}
+        <a href="{{ blog.url }}" class="btn action small">{{ 'blogs.general.view_all_articles' | t }}</a>
+      {% endif %}
+    {% endunless %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.featured-blog.name",
+  "settings": [
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.featured-blog.settings.layout.label",
+      "default": "grid",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.featured-blog.settings.layout.options__1"
+        },
+        {
+          "value": "list",
+          "label": "t:sections.featured-blog.settings.layout.options__2"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 10,
+      "step": 2,
+      "label": "t:sections.featured-blog.settings.post_limit.label",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "t:sections.settings.header.content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.settings.heading.label",
+      "info": "t:sections.settings.heading.info",
+      "default": {
+        "ar": "تحقق من آخر أخبارنا",
+        "bg": "Проверете последните ни новини",
+        "ca": "Consulta les nostres últimes notícies",
+        "cs": "Podívejte se na naše nejnovější zprávy",
+        "da": "Tjek vores seneste nyheder",
+        "de": "Überprüfen Sie unsere neuesten Nachrichten",
+        "el": "Δείτε τα τελευταία μας νέα",
+        "en": "Check our latest news",
+        "es": "Consulta nuestras últimas noticias",
+        "fi": "Tarkista viimeisimmät uutisemme",
+        "fr": "Consultez nos dernières nouvelles",
+        "he": "בדוק את החדשות האחרונות שלנו",
+        "hr": "Provjerite naše najnovije vijesti",
+        "hu": "Tekintse meg legfrissebb híreinket",
+        "id": "Cek berita terbaru kami",
+        "it": "Controlla le nostre ultime notizie",
+        "ja": "最新のニュースをチェックしてください",
+        "ko": "최신 뉴스 확인",
+        "lt": "Patikrinkite mūsų paskutines naujienas",
+        "nb": "Sjekk våre siste nyheter",
+        "nl": "Check ons laatste nieuws",
+        "pl": "Sprawdź nasze najnowsze wiadomości",
+        "pt-BR": "Confira nossas últimas notícias",
+        "pt-PT": "Confira nossas últimas notícias",
+        "ro": "Verificați ultimele noastre știri",
+        "ru": "Ознакомьтесь с нашими последними новостями",
+        "sk": "Pozrite si naše najnovšie správy",
+        "sl": "Preverite naše najnovejše novice",
+        "sv": "Kolla in våra senaste nyheter",
+        "th": "ตรวจสอบข่าวสารล่าสุดของเรา",
+        "tr": "En son haberlerimize göz atın",
+        "vi": "Kiểm tra tin tức mới nhất của chúng tôi",
+        "zh-CN": "查看我们的最新消息",
+        "zh-TW": "查看我們的最新消息"
+      }
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "t:sections.settings.content_max_width.label",
+      "default": 950,
+      "min": 400,
+      "max": 2000,
+      "step": 50,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "t:sections.settings.show_background.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded",
+      "label": "t:sections.settings.expanded.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collapsed",
+      "label": "t:sections.settings.collapsed.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "t:sections.settings.show_on_desktop.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "t:sections.settings.show_on_mobile.label",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-blog.presets.name"
+    }
+  ]
+}
+{% endschema %}

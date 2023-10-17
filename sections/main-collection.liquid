@@ -1,0 +1,99 @@
+{% assign columns = section.settings.columns | times: 1 %}
+{% assign rows = section.settings.rows | times: 1 %}
+{% assign limit = columns | times: rows %}
+
+<div class="content {% render 'content-classes', scope: section %}" data-section-id="{{ section.id }}" data-section-type="collection">
+  {% paginate collection.products by limit %}
+    {% render 'collection', products: collection.products, paginate: paginate %}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header__1.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection.settings.show_collection_image.label",
+      "info": "t:sections.main-collection.settings.show_collection_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "label": "t:sections.main-collection.settings.show_collection_description.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "t:sections.main-collection.settings.enable_filtering.label",
+      "info": "t:sections.main-collection.settings.enable_filtering.info",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "t:sections.main-collection.settings.enable_sorting.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_labels",
+      "label": "t:sections.main-collection.settings.show_labels.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header__3.content"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.main-collection.settings.columns.label",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "t:sections.main-collection.settings.rows.label",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "t:sections.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "t:sections.settings.show_background.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded",
+      "label": "t:sections.settings.expanded.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

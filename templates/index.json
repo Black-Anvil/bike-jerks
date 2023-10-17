@@ -1,0 +1,515 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Field Guide",
+            "max_width": 490
+          }
+        },
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "To the Bike Life",
+            "max_width": 500
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "text": "Get inspired",
+            "link": "shopify:\/\/blogs\/news",
+            "style": "solid",
+            "size": "normal"
+          }
+        },
+        "scroll-button": {
+          "type": "scroll-button",
+          "settings": {
+            "text": "Buy stuff",
+            "style": "solid",
+            "size": "normal"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subheading",
+        "button",
+        "scroll-button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/IMG_5362.jpg",
+        "video": "",
+        "alignment": "h-right v-top",
+        "color_heading": "#ffffff",
+        "color_subheading": "#ffffff",
+        "color_line_button": "#121212",
+        "color_paragraph": "#121212",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "mobile_min_height": 500,
+        "video_mobile": "",
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "collections-list": {
+      "type": "collections-list",
+      "blocks": {
+        "col-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts"
+          }
+        },
+        "col-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "patches"
+          }
+        },
+        "945dd223-831a-4aef-8322-6ceb8259b21b": {
+          "type": "collection",
+          "settings": {
+            "collection": "stickers"
+          }
+        },
+        "9566aad9-ae44-4787-a012-a96cfb8e786b": {
+          "type": "collection",
+          "settings": {
+            "collection": "bike-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "col-0",
+        "col-1",
+        "945dd223-831a-4aef-8322-6ceb8259b21b",
+        "9566aad9-ae44-4787-a012-a96cfb8e786b"
+      ],
+      "settings": {
+        "collection_height": "tall",
+        "collection_image_size": "cover",
+        "collection_image_opacity": 90,
+        "collection_interactive_enable": true,
+        "heading": "",
+        "expanded": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "banner-with-text-left": {
+      "type": "banner-with-text",
+      "settings": {
+        "title": "Hodag Country Ramble",
+        "text": "<p>Join us Sept 9-11th for a weekend of community and riding in Wisconsin's wonderful Northwoods. <br\/><br\/>26, 51 and 80 mile route options await. <a href=\"https:\/\/bikejerks.com\/pages\/hodag-country-ramble\" title=\"https:\/\/bikejerks.com\/pages\/hodag-country-ramble\">https:\/\/bikejerks.com\/pages\/hodag-country-ramble<\/a><\/p>",
+        "image": "shopify:\/\/shop_images\/IMG_3932.jpg",
+        "image_for_mobile": "shopify:\/\/shop_images\/IMG_1646.jpg",
+        "image_position": "center center",
+        "text_position": "left",
+        "text_align": "left",
+        "button_label": "Explore",
+        "button_link": "",
+        "expanded": false,
+        "expanded_content": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "feature-columns": {
+      "type": "feature-columns",
+      "disabled": true,
+      "blocks": {
+        "feature-0": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        },
+        "feature-1": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        },
+        "feature-2": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        },
+        "feature-3": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        },
+        "feature-4": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        },
+        "feature-5": {
+          "type": "text_column",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews.<\/p>",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature-0",
+        "feature-1",
+        "feature-2",
+        "feature-3",
+        "feature-4",
+        "feature-5"
+      ],
+      "settings": {
+        "title": "Text columns with images",
+        "subtitle": "<p>Use this section to describe details that make your store different.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "max_width": 1200,
+        "show_background": false,
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Soft goods",
+        "collection": "shirts",
+        "columns": 4,
+        "rows": 2,
+        "button_label": "See all shirts",
+        "button_link": "shopify:\/\/collections\/all",
+        "show_background": false,
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "banner-with-text-right": {
+      "type": "banner-with-text",
+      "disabled": true,
+      "settings": {
+        "title": "Banner with text",
+        "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+        "image_position": "center center",
+        "text_position": "right",
+        "text_align": "left",
+        "button_label": "Explore",
+        "button_link": "",
+        "expanded": false,
+        "expanded_content": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "banner-with-text-left-2": {
+      "type": "banner-with-text",
+      "disabled": true,
+      "settings": {
+        "title": "Banner with text",
+        "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+        "image_position": "center center",
+        "text_position": "left",
+        "text_align": "left",
+        "button_label": "Explore",
+        "button_link": "",
+        "expanded": false,
+        "expanded_content": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "layout": "grid",
+        "post_limit": 2,
+        "title": "Latest",
+        "max_width": 950,
+        "show_background": false,
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "increase_space_before_block": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "increase_space_before_block": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatches_selector": "",
+            "popup_selector": "Size",
+            "popup_text": "Size guide",
+            "popup_page": "",
+            "increase_space_before_block": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_pickup_availability": true,
+            "increase_space_before_block": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "increase_space_before_block": true
+          }
+        },
+        "collapsible_tab_1": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Tab 1",
+            "content": "<p>Tab 1 content...<\/p>",
+            "page": "",
+            "icon": "washing",
+            "increase_space_before_block": true
+          }
+        },
+        "collapsible_tab_2": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Tab 2",
+            "content": "<p>Tab 2 content...<\/p>",
+            "page": "",
+            "icon": "leaf",
+            "increase_space_before_block": true
+          }
+        },
+        "collapsible_tab_3": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Tab 3",
+            "content": "<p>Tab 3 content...<\/p>",
+            "page": "",
+            "icon": "truck",
+            "increase_space_before_block": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "collapsible_tab_1",
+        "collapsible_tab_2",
+        "collapsible_tab_3"
+      ],
+      "settings": {
+        "featured_product": "keep-on-truckin-topcap",
+        "product_images_layout": "left",
+        "enable_sticky_info": true,
+        "zoom_enable": true,
+        "enable_video_looping": false,
+        "show_background": true,
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "collapsible_tab_1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Question 1",
+            "content": "<p>Answer...<\/p>",
+            "page": "",
+            "icon": "none"
+          }
+        },
+        "collapsible_tab_2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Question 2",
+            "content": "<p>Answer...<\/p>",
+            "page": "",
+            "icon": "none"
+          }
+        },
+        "collapsible_tab_3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Question 3",
+            "content": "<p>Answer...<\/p>",
+            "page": "",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_1",
+        "collapsible_tab_2",
+        "collapsible_tab_3"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "subtitle": "",
+        "max_width": 950,
+        "show_background": false,
+        "expanded": true,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "logo-list": {
+      "type": "logo-list",
+      "disabled": true,
+      "blocks": {
+        "logo-0": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo-1": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo-2": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo-3": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo-0",
+        "logo-1",
+        "logo-2",
+        "logo-3"
+      ],
+      "settings": {
+        "title": "As featured in",
+        "show_background": false,
+        "expanded": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "video": {
+      "type": "featured-video",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/IMG_3466.jpg",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=T6AYkCcUeZQ",
+        "expanded": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "map": {
+      "type": "map",
+      "disabled": true,
+      "settings": {
+        "heading": "Our store",
+        "address": "<p>123 Fake St.<br\/>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br\/>Saturday, 11am - 9pm<br\/>Sunday, 11am - 5pm<\/p>",
+        "map_address": "301 Front St W, Toronto",
+        "button": "Directions",
+        "api_key": "",
+        "position": "center center",
+        "expanded": false,
+        "expanded_content": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "heading": "Subscribe to our newsletter",
+        "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+        "show_background": true,
+        "expanded": false,
+        "collapsed": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "collections-list",
+    "banner-with-text-left",
+    "feature-columns",
+    "featured-collection",
+    "banner-with-text-right",
+    "banner-with-text-left-2",
+    "featured-blog",
+    "featured-product",
+    "faq",
+    "logo-list",
+    "video",
+    "map",
+    "newsletter"
+  ]
+}
